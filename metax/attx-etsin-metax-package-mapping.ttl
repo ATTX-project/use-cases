@@ -1,0 +1,544 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix ex: <http://example.com/ns#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix attx: <http://data.hulib.helsinki.fi/attx/> .
+@prefix attx-work: <http://data.hulib.helsinki.fi/attx/work#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix etsin: <http://etsin.avointiede.fi/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix schema: <http://schema.org/> .
+@prefix adms:  <http://www.w3.org/ns/adms#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix att: <http://iow.csc.fi/ns/att#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix frapo: <http://purl.org/cerif/frapo/> .
+
+
+
+<etsin:DataSetIdentifiersExternal>
+
+    rml:logicalSource [
+        rml:source "{file}";
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$.result[*]"
+    ];
+
+    rr:subjectMap [
+        rml:reference "external_id" ;
+        rr:class adms:Identifier
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate skos:notation ;
+        rr:objectMap [
+            rml:reference "external_id";
+            rr:termType rr:Literal
+        ]
+    ];
+.
+
+<etsin:Locations>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].geographic_coverage[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-location:{@}" ;
+    rr:class dct:Location ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate locn:geographicName;
+      rr:objectMap [
+        rml:reference "@"
+      ]
+    ];
+.
+
+<etsin:Periods>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    #rml:iterator "$.result[?(@.temporal_coverage_begin!=null)]"
+    rml:iterator "$.result[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-period:{resources[?(@.resource_type=='dataset')].id}" ;
+    rr:class dct:PeriodOfTime ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate schema:startDate;
+      rr:objectMap [
+        rml:reference "temporal_coverage_begin" ;
+        rr:datatype xsd:dateTime ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate schema:endDate;
+      rr:objectMap [
+        rml:reference "temporal_coverage_end" ;
+        rr:datatype xsd:dateTime ;
+      ]
+    ];
+
+.
+
+<etsin:Orgs>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].agent[?(@.role=='author')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-org:{organisation}" ;
+    rr:class foaf:Agent ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "organisation"
+      ]
+    ];
+.
+
+<etsin:Funders>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].agent[?(@.role=='funder')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-funder:{organisation}" ;
+    rr:class foaf:Agent ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "organisation"
+      ]
+    ];
+.
+
+<etsin:Distributors>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].agent[?(@.role=='distributor')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-distributor:{name}" ;
+    rr:class foaf:Agent ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "name"
+      ]
+    ];
+.
+
+<etsin:Owners>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].agent[?(@.role=='owner')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-owner:{name}" ;
+    rr:class foaf:Agent ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "name"
+      ]
+    ];
+.
+
+<etsin:Persons>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].agent[?(@.role=='author')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-person:{name}" ;
+    rr:class foaf:Agent ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "name"
+      ]
+    ];
+.
+
+<etsin:Authors>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].agent[?(@.role=='author')]"
+
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-author:{parentID}-{name}" ;
+    rr:class foaf:Agent ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "name"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:identifier ;
+      rr:objectMap [
+        rr:parentTriplesMap <etsin:Persons>;
+
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:isPartOf ;
+      rr:objectMap [
+        rr:parentTriplesMap <etsin:Orgs>;
+      ]
+    ];
+
+.
+
+
+
+
+
+<etsin:Contributors>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].agent[?(@.role=='contributor')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-contributor:{name}" ;
+    rr:class foaf:Agent ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "name"
+      ]
+    ];
+.
+
+<etsin:Projects>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].agent[?(@.role=='funder')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-project:{name}" ;
+    rr:class foaf:Project ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "name"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate frapo:hasFundingAgency ;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:Funders>;
+      ]
+  ];
+
+
+.
+
+<etsin:Languages>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].language[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-language:{@}" ;
+    rr:class dct:LinguisticSystem ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:identifier ;
+      rr:objectMap [
+        rr:template "http://lexvo.org/id/iso639-3/{@}" ;
+        rr:datatype xsd:anyURI ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate skos:notation ;
+      rr:objectMap [
+        rr:template "{@}" ;
+        rr:datatype xsd:string ;
+      ]
+    ];
+.
+
+<etsin:Contacts>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].contact[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-contact:{name}" ;
+    rr:class foaf:Agent ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:identifier ;
+      rr:objectMap [
+        rml:reference "URL" ;
+        rr:datatype xsd:anyURI ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:name ;
+      rr:objectMap [
+        rml:reference "name" ;
+      ]
+    ];
+
+.
+
+<etsin:CatalogRecord>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*]"
+  ];
+
+
+  rr:subjectMap [
+    rr:template "catalog-record:{name}" ;
+    rr:class att:CatalogRecord ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:identifier;
+      rr:objectMap [
+          rml:reference "id";
+          rr:termType rr:IRI ;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:modified;
+      rr:objectMap [
+        rml:reference "metadata_modified"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:created;
+      rr:objectMap [
+        rml:reference "metadata_created"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate foaf:primaryTopic;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:DataSet>;
+      ]
+  ];
+
+
+.
+<etsin:DataSet>
+  rml:logicalSource [
+    rml:source "{file}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*]"
+  ];
+
+
+  rr:subjectMap [
+    rr:template "dataset:{name}" ;
+    rr:class dcat:Dataset ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:description;
+      rr:objectMap [
+        rml:reference "notes.eng" ;
+        rr:language "eng"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:description;
+      rr:objectMap [
+        rml:reference "notes.fin" ;
+        rr:language "fin"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:description;
+      rr:objectMap [
+        rml:reference "notes.und" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:identifier;
+      rr:objectMap [
+          rml:reference "id";
+          rr:termType rr:IRI ;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate adms:identifier;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:DataSetIdentifiersExternal>;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:title;
+      rr:objectMap [
+        rml:reference "title.eng" ;
+        rr:language "eng"
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate dct:title;
+      rr:objectMap [
+        rml:reference "title.fin" ;
+        rr:language "fin"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:title;
+      rr:objectMap [
+        rml:reference "title.und" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:modified;
+      rr:objectMap [
+        rml:reference "version"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dcat:keyword;
+      rr:objectMap [
+        rml:reference "tags[*].display_name"
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate dct:bibliographicCitation;
+      rr:objectMap [
+        rml:reference "citation"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:spatial;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:Locations>;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:temporal ;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:Periods>;
+      ]
+  ];
+
+# Not all the disciplines are IRIs
+  rr:predicateObjectMap [
+      rr:predicate att:discipline ;
+      rr:objectMap [
+          rml:reference "discipline" ;
+          rr:termType rr:Literal ;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:language;
+      rr:objectMap [
+          rr:template "etsin-language:{language}" ;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dcat:contactPoint;
+      rr:objectMap [
+          rr:template "etsin-contact:{contact[*].name}" ;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:publisher ;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:Distributors>;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:rightHolder ;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:Owners>;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:contributor ;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:Contributors>;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate dct:creator ;
+      rr:objectMap [
+          rr:parentTriplesMap <etsin:Authors>;
+      ]
+  ];
+.

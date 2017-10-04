@@ -1,0 +1,56 @@
+
+<etsin-funder:Suomen%20Akatemia%20-%20Academy%20of%20Finland> a <http://xmlns.com/foaf/0.1/Agent> ;
+	<http://xmlns.com/foaf/0.1/name> "Suomen Akatemia - Academy of Finland" .
+
+<etsin-language:eng> a <http://purl.org/dc/terms/LinguisticSystem> ;
+	<http://purl.org/dc/terms/identifier> "http://lexvo.org/id/iso639-3/eng"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+	<http://www.w3.org/2004/02/skos/core#notation> "eng" .
+
+<etsin-language:sme> a <http://purl.org/dc/terms/LinguisticSystem> ;
+	<http://purl.org/dc/terms/identifier> "http://lexvo.org/id/iso639-3/sme"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+	<http://www.w3.org/2004/02/skos/core#notation> "sme" .
+
+<etsin-language:fin> a <http://purl.org/dc/terms/LinguisticSystem> ;
+	<http://purl.org/dc/terms/identifier> "http://lexvo.org/id/iso639-3/fin"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+	<http://www.w3.org/2004/02/skos/core#notation> "fin" .
+
+<etsin-distributor:Yhteiskuntatieteellinen%20tietoarkisto> a <http://xmlns.com/foaf/0.1/Agent> ;
+	<http://xmlns.com/foaf/0.1/name> "Yhteiskuntatieteellinen tietoarkisto" .
+
+<etsin-org:University%20of%20Helsinki> a <http://xmlns.com/foaf/0.1/Agent> ;
+	<http://xmlns.com/foaf/0.1/name> "University of Helsinki" .
+
+<catalog-record:urn-nbn-fi-csc-kata-test1> a <http://iow.csc.fi/ns/att#CatalogRecord> ;
+	<http://purl.org/dc/terms/identifier> <urn:nbn:fi:csc-kata-test1> ;
+	<http://purl.org/dc/terms/modified> "2017-08-29T13:16:49.968537" ;
+	<http://purl.org/dc/terms/created> "2017-08-29T13:16:49.939715" ;
+	<http://xmlns.com/foaf/0.1/primaryTopic> <dataset:urn-nbn-fi-csc-kata-test1> .
+
+<dataset:urn-nbn-fi-csc-kata-test1> a <http://www.w3.org/ns/dcat#Dataset> ;
+	<http://purl.org/dc/terms/title> "Test project 1"@eng ;
+	<http://purl.org/dc/terms/language> <etsin-language:eng> , <etsin-language:sme> , <etsin-language:fin> ;
+	<http://purl.org/dc/terms/publisher> <etsin-distributor:Yhteiskuntatieteellinen%20tietoarkisto> .
+
+<etsin-contact:Person%20Author> a <http://xmlns.com/foaf/0.1/Agent> ;
+	<http://purl.org/dc/terms/identifier> "http://contacturl/"^^<http://www.w3.org/2001/XMLSchema#anyURI> ;
+	<http://xmlns.com/foaf/0.1/name> "Person Author" .
+
+<etsin-author:urn-nbn-fi-csc-kata-test1-Person%20Author> a <http://xmlns.com/foaf/0.1/Agent> ;
+	<http://purl.org/dc/terms/identifier> <etsin-person:Person%20Author> ;
+	<http://xmlns.com/foaf/0.1/name> "Person Author" ;
+	<http://purl.org/dc/terms/isPartOf> <etsin-org:University%20of%20Helsinki> .
+
+<etsin-person:Person%20Author> a <http://xmlns.com/foaf/0.1/Agent> ;
+	<http://xmlns.com/foaf/0.1/name> "Person Author" .
+
+<etsin-owner:Person%20Author> a <http://xmlns.com/foaf/0.1/Agent> ;
+	<http://xmlns.com/foaf/0.1/name> "Person Author" .
+
+<etsin-contributor:Person%20Author> a <http://xmlns.com/foaf/0.1/Agent> ;
+	<http://xmlns.com/foaf/0.1/name> "Person Author" .
+
+<etsin-project:Project's%20name> a <http://xmlns.com/foaf/0.1/Project> ;
+	<http://xmlns.com/foaf/0.1/name> "Project's name" ;
+	<http://purl.org/cerif/frapo/hasFundingAgency> <etsin-funder:Suomen%20Akatemia%20-%20Academy%20of%20Finland> .
+
+<etsin-period:etsin-uuid-1> a <http://purl.org/dc/terms/PeriodOfTime> .

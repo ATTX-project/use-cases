@@ -1,0 +1,2083 @@
+@prefix schema: <http://schema.org/> .
+@prefix dcap:  <http://purl.org/ws-mmi-dc/terms/> .
+@prefix void:  <http://rdfs.org/ns/void#> .
+@prefix adms:  <http://www.w3.org/ns/adms#> .
+@prefix dcam:  <http://purl.org/dc/dcam/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix iow:   <http://iow.csc.fi/ns/iow#> .
+@prefix sd:    <http://www.w3.org/ns/sparql-service-description#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix text:  <http://jena.apache.org/text#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix ts:    <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<https://tt.eduuni.fi/sites/csc-iow#KTK>
+        a              foaf:Group ;
+        rdfs:label     "Koulutus, tiede ja kulttuuri"@fi , "Learning, Education and Culture"@en , "Learning, Science and Culture"@en ;
+        foaf:homepage  "https://tt.eduuni.fi/sites/csc-iow/koulutuskulttuuri" .
+
+foaf:   a                               dcterms:Standard ;
+        rdfs:label                      "foaf"@en , "Friend of a Friend"@fi ;
+        dcap:preferredXMLNamespaceName  "http://xmlns.com/foaf/0.1/" ;
+        dcap:preferredXMLNamespacePrefix
+                "foaf" .
+
+schema:  a                              dcterms:Standard ;
+        rdfs:label                      "schema"@en ;
+        dcap:preferredXMLNamespaceName  "http://schema.org/" ;
+        dcap:preferredXMLNamespacePrefix
+                "schema" .
+
+<http://jhsmeta.fi/skos/>
+        a                   skos:ConceptScheme ;
+        dcterms:identifier  "jhsmeta" ;
+        dcterms:title       "JHSmeta"@fi .
+
+skos:   a                               dcterms:Standard ;
+        rdfs:label                      "Simple Knowledge Organization System"@en ;
+        dcap:preferredXMLNamespaceName  "http://www.w3.org/2004/02/skos/core#" ;
+        dcap:preferredXMLNamespacePrefix
+                "skos" .
+
+adms:   a                               dcterms:Standard ;
+        rdfs:label                      "adms"@en , "Asset Description Metadata Schema"@fi ;
+        dcap:preferredXMLNamespaceName  "http://www.w3.org/ns/adms#" ;
+        dcap:preferredXMLNamespacePrefix
+                "adms" .
+
+dcterms:  a                             dcterms:Standard ;
+        rdfs:label                      "dcterms"@en , "Dublin Core Terms 1.1"@fi ;
+        dcap:preferredXMLNamespaceName  "http://purl.org/dc/terms/" ;
+        dcap:preferredXMLNamespacePrefix
+                "dcterms" .
+
+prov:   a                               dcterms:Standard ;
+        rdfs:label                      "prov"@en ;
+        dcap:preferredXMLNamespaceName  "http://www.w3.org/ns/prov#" ;
+        dcap:preferredXMLNamespacePrefix
+                "prov" .
+
+owl:    a                               dcterms:Standard ;
+        rdfs:label                      "owl"@en ;
+        dcap:preferredXMLNamespaceName  "http://www.w3.org/2002/07/owl#" ;
+        dcap:preferredXMLNamespacePrefix
+                "owl" .
+
+<http://iow.csc.fi/ns/att>
+        a                               owl:Ontology , dcap:DCAP ;
+        rdfs:comment                    "Tutkimusaineistokatalogien yhteentoimivuutta ja tutkimusaineistojen löydettävyyttä tukeva tietomalli"@fi ;
+        rdfs:label                      "Tutkimusaineistokatalogien soveltamisprofiili"@fi , "Application Profile for Research Data Catalogs"@en ;
+        iow:codeLists                   <https://www.iana.org/assignments/media-types/> , <http://publications.europa.eu/mdr/authority/file-type/> ;
+        dcterms:created                 "2016-05-17T10:14:08"^^xsd:dateTime ;
+        dcterms:hasPart                 <http://iow.csc.fi/ns/att#ResearchDataset> , <http://iow.csc.fi/ns/att#ResearchDataCatalog> , <http://iow.csc.fi/ns/att#RelatedEntity> , <http://iow.csc.fi/ns/att#DatasetChecksum> , <http://iow.csc.fi/ns/att#ResearchAgent> , <http://iow.csc.fi/ns/att#ResearchDataLicenseDocument> , <http://iow.csc.fi/ns/att#PeriodOfTime> , <http://iow.csc.fi/ns/att#Location> , <http://iow.csc.fi/ns/att#discipline> , <http://iow.csc.fi/ns/att#Concept> , <http://iow.csc.fi/ns/att#ConceptScheme> , <http://iow.csc.fi/ns/att#Document> , <http://iow.csc.fi/ns/att#LinguisticSystem> , <http://iow.csc.fi/ns/att#Project> , <http://iow.csc.fi/ns/att#MediaType> , <http://iow.csc.fi/ns/att#FileFormat> , <http://iow.csc.fi/ns/att#Activity> , <http://iow.csc.fi/ns/att#StructuredIdentifier> , <http://iow.csc.fi/ns/att#Distribution> , <http://iow.csc.fi/ns/att#RightsStatement> , <http://iow.csc.fi/ns/att#Variable> , <http://iow.csc.fi/ns/att#CatalogRecord> , <http://iow.csc.fi/ns/att#DistributionCharacteristics> ;
+        dcterms:identifier              "urn:uuid:3694c6db-3eab-4262-9cbc-49b3e0e758b3" ;
+        dcterms:isPartOf                <https://tt.eduuni.fi/sites/csc-iow#KTK> ;
+        dcterms:language                ( "fi" "en" ) ;
+        dcterms:modified                "2016-10-06T14:03:32.548+03:00"^^xsd:dateTime ;
+        dcterms:references              <http://jhsmeta.fi/skos/> , <http://iow.csc.fi/ns/att/skos#> ;
+        dcterms:requires                foaf: , schema: , skos: , adms: , dcterms: , prov: , owl: , <http://www.w3.org/ns/dcat#> , <http://purl.org/dc/dcmitype/> , <http://www.w3.org/2006/vcard/ns#> , <http://rdf-vocabulary.ddialliance.org/discovery#> , <http://spdx.org/rdf/terms#> , <http://purl.org/cerif/frapo/> , <http://www.loc.gov/premis/rdf/v1#> , <http://www.w3.org/2003/01/geo/wgs84_pos#> , <http://www.w3.org/ns/locn#> ;
+        dcap:preferredXMLNamespaceName  "http://iow.csc.fi/ns/att#" ;
+        dcap:preferredXMLNamespacePrefix
+                "att" ;
+        owl:versionInfo                 "Unstable" .
+
+<http://iow.csc.fi/ns/att/skos#>
+        a                   skos:Collection ;
+        dcterms:identifier  "att" ;
+        dcterms:title       "Sisäinen käsitteistö"@fi .
+
+<http://www.w3.org/ns/dcat#>
+        a                               rdfs:Resource ;
+        rdfs:label                      "Data Catalog Vocabulary"@fi ;
+        iow:isResolved                  true ;
+        dcap:preferredXMLNamespaceName  "http://www.w3.org/ns/dcat#" ;
+        dcap:preferredXMLNamespacePrefix
+                "dcat" .
+
+<http://purl.org/dc/dcmitype/>
+        a                               rdfs:Resource ;
+        rdfs:label                      "Dublin Core Type Vocabulary"@fi ;
+        iow:isResolved                  true ;
+        dcap:preferredXMLNamespaceName  "http://purl.org/dc/dcmitype/" ;
+        dcap:preferredXMLNamespacePrefix
+                "dctype" .
+
+<http://www.w3.org/2006/vcard/ns#>
+        a                               rdfs:Resource ;
+        rdfs:label                      "VCARD"@fi ;
+        iow:isResolved                  true ;
+        dcap:preferredXMLNamespaceName  "http://www.w3.org/2006/vcard/ns#" ;
+        dcap:preferredXMLNamespacePrefix
+                "vcard" .
+
+<http://iow.csc.fi/ns/att#ResearchDataset>
+        a                   sh:Shape ;
+        rdfs:comment        "A collection of data that consists of scientific information generated by using certain research methods"@en , "Tutkimusaineisto, josta on muodostettu tietoa käyttäen tiettyjä tutkimusmenetelmiä"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "قائمة بيانات"@ar , "データセット"@ja , "Jeu de données"@fr , "Σύνολο Δεδομένων"@el , "Conjunto de datos"@es , "Tutkimuksen tietoaineisto"@fi , "Research dataset"@en ;
+        dcterms:created     "2016-05-17T12:29:33"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:204f2046-ee5c-48e5-8b6f-bda5621026af" ;
+        dcterms:modified    "2017-06-20T13:44:56.672+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:dbbc3be6-1108-466c-9055-82cbf51b7c2f> , <urn:uuid:5f353172-d72a-4341-8660-823b58695481> , <urn:uuid:b371b11c-5bda-43f7-a1f1-43274689e5a8> , <urn:uuid:2fb138de-3d60-44dd-b867-94039964d695> , <urn:uuid:b842f7e4-4d0d-4517-9742-ebd7d0a8cfb0> , <urn:uuid:a6ebe32f-1e63-445c-8ee6-fcb89083d88b> , <urn:uuid:6fb7df31-2d80-4587-8b1f-49eefd6748c1> , <urn:uuid:06ad93be-c85d-4f3b-b62e-4fad3f688caa> , <urn:uuid:d4db53c0-abf0-4711-87ea-dfc72024bcb5> , <urn:uuid:036fc56e-1d6a-4e5d-849e-25f35e96fdb6> , <urn:uuid:99f6193c-9f35-46c5-bdbd-98b751581bf1> , <urn:uuid:9e6111d0-9fe2-481b-b8d6-9825bc4bbc87> , <urn:uuid:1c85c8be-bf9b-494c-a7f3-cc36db3f061d> , <urn:uuid:f326a550-b715-4838-a84c-25241dae83d3> , <urn:uuid:45a5bd87-693f-4800-9204-5c3b80a2a174> , <urn:uuid:53988860-7355-46ae-9948-3edc19c9b101> , <urn:uuid:bc1fa71f-6a7c-467a-aeb8-2fa845332742> , <urn:uuid:85fbe9c4-d88c-4694-8268-873da7de0d6c> , <urn:uuid:68030600-309c-4019-a03d-4af405f5debf> , <urn:uuid:25d54dca-cdd5-4e28-ad8a-dc337b870e86> , <urn:uuid:56c921b8-d012-4c84-9004-917d0765eabb> , <urn:uuid:7fa79c1a-5cb4-40a7-af7b-02072d3792ee> , <urn:uuid:81eebc56-49a6-4404-be8e-c1164b128883> , <urn:uuid:4e5467b4-5452-4d2b-b1d3-986da374be7f> , <urn:uuid:c2546089-1a41-406b-9047-51c635e1639b> , <urn:uuid:d2931bcb-01ff-40cf-9dc8-ae3f20d2ba2d> ;
+        sh:targetClass       <http://www.w3.org/ns/dcat#Dataset> .
+
+<http://iow.csc.fi/ns/att#ResearchDataCatalog>
+        a                   sh:Shape ;
+        rdfs:comment        "Research data catalog is a curated collection of metadata about datasets primarily used for research activities"@en , "Tutkimusaineistokatalogi on kuratoitu kokoelma tutkimusaineistojen metatietoja"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Κατάλογος"@el , "Catálogo"@es , "فهرس قوائم البيانات"@ar , "カタログ"@ja , "Catalogue"@fr , "Tutkimusaineistokatalogi"@fi , "Research Data Catalog"@en ;
+        dcterms:created     "2016-05-17T10:19:46"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:75937d10-597a-449a-aeb6-5c77bcb566ec" ;
+        dcterms:modified    "2016-10-24T13:43:52.553+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:fbe1387b-6e0b-451f-a590-e2204e81fecc> , <urn:uuid:e7b54266-3406-40f5-b163-d91cf9e570ed> , <urn:uuid:cd406ee4-f5be-427d-b0fe-de312632d78b> , <urn:uuid:1ef0f3b6-730b-478a-a026-3d36c02cc3fb> , <urn:uuid:1d1224f6-ed81-4332-931a-dc6244d836a9> , <urn:uuid:b8418723-820d-43da-9546-3fa59bad48de> , <urn:uuid:a4563bae-3d04-41f8-afe7-8a7659107a87> , <urn:uuid:fe10a95e-38e3-4872-8010-c22e550083ef> , <urn:uuid:973d4ee3-4869-4027-be82-392cbbc0bc56> , <urn:uuid:c41d0545-ef15-4e8d-a108-59c2663baa2e> , <urn:uuid:1fcf2707-f23e-4018-b6e0-bd2764069d54> ;
+        sh:targetClass       <http://www.w3.org/ns/dcat#Catalog> .
+
+<http://iow.csc.fi/ns/att#RelatedEntity>
+        a                   sh:Shape ;
+        rdfs:comment        "Any entity that is related to the research dataset"@en , "Tutkimusaineistoon liittyvä resurssi, joka on joku muu kuin toinen tutkimusaineisto.\n\nEsimerkiksi mittalaite tai tutkimuksen kohteena oleva objekti."@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Entity"@en , "Entiteetti"@fi ;
+        dcterms:created     "2016-05-17T13:13:10"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:6f336720-84ed-4ae6-a997-9f9709cbd3c9" ;
+        dcterms:modified    "2016-10-24T11:49:57.156+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:dd9d3833-68d5-4edf-b96f-ebbe16deabff> , <urn:uuid:093e3285-b224-4fbc-9fe1-79e4bd710da7> , <urn:uuid:5c054629-b083-4502-811b-f5ac438c6fee> , <urn:uuid:8de22751-6c15-4f84-b255-8b9fa466e1d3> ;
+        sh:targetClass       prov:Entity .
+
+<http://rdf-vocabulary.ddialliance.org/discovery#>
+        a                               rdfs:Resource ;
+        rdfs:label                      "DDI-RDF Discovery Vocabulary"@en ;
+        iow:isResolved                  false ;
+        dcap:preferredXMLNamespaceName  "http://rdf-vocabulary.ddialliance.org/discovery#" ;
+        dcap:preferredXMLNamespacePrefix
+                "disco" .
+
+<http://spdx.org/rdf/terms#>
+        a                               rdfs:Resource ;
+        rdfs:label                      "SPDX® Vocabulary Specification"@en ;
+        iow:isResolved                  false ;
+        dcap:preferredXMLNamespaceName  "http://spdx.org/rdf/terms#" ;
+        dcap:preferredXMLNamespacePrefix
+                "spdx" .
+
+<http://iow.csc.fi/ns/att#DatasetChecksum>
+        a                   sh:Shape ;
+        rdfs:comment        "A value that allows the contents of a file to be authenticated. This class allows the results of a variety of checksum and cryptographic message digest algorithms to be represented."@en , "Arvo joka mahdollistaa jakelun sisällön tarkistamisen"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Checksum"@en , "Tarkistussumma"@fi ;
+        dcterms:created     "2016-05-17T13:26:21"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:7950884d-3a5e-4498-be71-1e82cbf6e1dc" ;
+        dcterms:modified    "2016-10-24T12:02:53.317+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:9baa0ec8-f994-443d-9793-595ebe498e18> , <urn:uuid:0d4bcc55-523f-4d08-a37c-0fdb8923d630> ;
+        sh:targetClass       <http://spdx.org/rdf/terms#Checksum> .
+
+<http://purl.org/cerif/frapo/>
+        a                               rdfs:Resource ;
+        rdfs:label                      "Funding, Research Administration and Projects Ontology"@en ;
+        iow:isResolved                  false ;
+        dcap:preferredXMLNamespaceName  "http://purl.org/cerif/frapo/" ;
+        dcap:preferredXMLNamespacePrefix
+                "frapo" .
+
+<http://iow.csc.fi/ns/att#ResearchAgent>
+        a                    sh:Shape ;
+        rdfs:comment         "An agent (eg. person, group, software or physical artifact)."@en , "Tutkimusaineiston tuottamiseen liittyvä henkilö tai organisaatio"@fi ;
+        rdfs:isDefinedBy     <http://iow.csc.fi/ns/att> ;
+        rdfs:label           "Toimija"@fi , "Agent"@en ;
+        dcterms:created      "2016-05-17T13:59:53"^^xsd:dateTime ;
+        dcterms:identifier   "urn:uuid:22b05419-9392-4c1e-9aaf-aeb3b4c36025" ;
+        dcterms:modified     "2016-11-25T10:53:29.954+02:00"^^xsd:dateTime ;
+        owl:equivalentClass  prov:Agent ;
+        owl:versionInfo      "Unstable" ;
+        sh:property          <urn:uuid:13212aef-1874-41d0-989b-b3039cc4a009> , <urn:uuid:4016201d-b805-4ec3-8e31-884fcd4089ea> , <urn:uuid:be5b07c6-8c74-4da6-93cf-2cdb47fe53af> , <urn:uuid:e875e6c2-9e17-4c45-8c3a-8fd35b4737cc> , <urn:uuid:b7704fba-4a73-4055-987d-9b7b99014ee8> , <urn:uuid:a1ff7c11-84f2-45a4-991a-9d37be37fac9> ;
+        sh:targetClass        foaf:Agent .
+
+<http://www.loc.gov/premis/rdf/v1#>
+        a                               rdfs:Resource ;
+        rdfs:label                      "The PREMIS ontology"@en ;
+        iow:isResolved                  true ;
+        dcap:preferredXMLNamespaceName  "http://www.loc.gov/premis/rdf/v1#" ;
+        dcap:preferredXMLNamespacePrefix
+                "premis" .
+
+<http://iow.csc.fi/ns/att#ResearchDataLicenseDocument>
+        a                   sh:Shape ;
+        rdfs:comment        "A legal document giving official permission to do something with the resource"@en , "Virallinen aineiston käyttöön oikeuttava sopimus"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "License Document"@en , "Lisenssi"@fi ;
+        dcterms:created     "2016-05-17T14:24:26"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:7d3b2702-808a-4eb9-8f6d-25cdde198112" ;
+        dcterms:modified    "2016-12-09T15:08:17.843+02:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:402f88eb-6d80-4961-9c2e-7bc9bc90a90d> , <urn:uuid:2d90641e-b224-43ac-9329-0ecd7e9875b9> , <urn:uuid:141f3508-35eb-4748-8091-e19e4b755c24> , <urn:uuid:57eec2d3-d622-41bb-b0c7-905c6ade66d7> , <urn:uuid:097b8b35-f547-44f5-ab39-810ca61cc20c> ;
+        sh:targetClass       dcterms:LicenseDocument .
+
+iow:OtherCodeGroup  dcterms:title  "Reference data"@en , "Muut luokitukset"@fi .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#>
+        a                               rdfs:Resource ;
+        rdfs:label                      "Geo Positioning Vocabulary"@en ;
+        iow:isResolved                  true ;
+        dcap:preferredXMLNamespaceName  "http://www.w3.org/2003/01/geo/wgs84_pos#" ;
+        dcap:preferredXMLNamespacePrefix
+                "geo" .
+
+<urn:uuid:fbe1387b-6e0b-451f-a590-e2204e81fecc>
+        rdfs:comment              "El sistema de organización del conocimiento utilizado para clasificar conjuntos de datos de catálogos."@es , "Το σύστημα οργάνωσης γνώσης που χρησιμοποιείται για την κατηγοριοποίηση των συνόλων δεδομένων του καταλόγου."@el , "カタログのデータセットを分類するために用いられる知識組織化体系（KOS；knowledge organization system）。"@ja , "Le systhème d'ogranisation de connaissances utilisé pour classifier les jeux de données du catalogue."@fr , "لائحة التصنيفات المستخدمه لتصنيف قوائم البيانات ضمن الفهرس"@ar , "The knowledge organization system (SKOS) used to classify catalog's datasets. Used scheme: http://finto.fi/okm-tieteenala/"@en , "Tieteenalakohtainen tutkimusaineistojen luokitteluun käytetty SKOS taxonomia"@fi ;
+        rdfs:label                "قائمة التصنيفات"@ar , "taxonomía de temas"@es , "テーマ"@ja , "taxonomie de thèmes"@fr , "Ταξινομία θεματικών κατηγοριών."@el , "Theme taxonomy"@en , "Tutkimusalan käsitejärjestelmä"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  6 ;
+        sh:path              <http://www.w3.org/ns/dcat#themeTaxonomy> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ConceptScheme> .
+
+<urn:uuid:e7b54266-3406-40f5-b163-d91cf9e570ed>
+        rdfs:comment              "تربط الفهرس بسجل ضمنه"@ar , "Relie un catalogue à ses registres"@fr , "Links a catalog to its records."@en , "カタログの一部であるカタログ・レコード。"@ja , "Συνδέει έναν κατάλογο με τις καταγραφές του."@el , "Enlaza un catálogo a sus registros."@es , "Tietueet, jotka kuvaavat tutkimusaineiston metatiedoille tehtyjä muutoksia"@fi ;
+        rdfs:label                "registro"@es , "カタログ・レコード"@ja , "سجل"@ar , "registre"@fr , "καταγραφή"@el , "Katalogitietue"@fi , "Metadata record"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  8 ;
+        sh:path              <http://www.w3.org/ns/dcat#record> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#CatalogRecord> .
+
+<urn:uuid:cd406ee4-f5be-427d-b0fe-de312632d78b>
+        rdfs:comment              "Enlaza un catálogo a un conjunto de datos que es parte de ese catálogo"@es , "Συνδέει έναν κατάλογο με ένα σύνολο δεδομένων το οποίο ανήκει στον εν λόγω κατάλογο."@el , "Relie un catalogue à un jeu de données faisant partie de ce catalogue"@fr , "تربط الفهرس بقائمة بيانات ضمنه"@ar , "Links a catalog to a dataset that is part of the catalog."@en , "カタログの一部であるデータセット。"@ja , "Aineistot, jotka on kuvailtu tutkimusaineistokatalogissa"@fi ;
+        rdfs:label                "jeu de données"@fr , "σύνολο δεδομένων"@el , "conjunto de datos"@es , "قائمة بيانات"@ar , "データセット"@ja , "Dataset"@en , "Tutkimusaineisto"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  7 ;
+        sh:minCount               1 ;
+        sh:path              <http://www.w3.org/ns/dcat#dataset> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchDataset> .
+
+<urn:uuid:0cecfbbe-d36e-4cf2-acd9-16425886b166>
+        rdfs:comment              "Unique, permanent identifier for a metadata record. When metadata is updated, the identifier is unchanged."@en , "Metatietojen tunniste on yksiselitteinen, pysyvä tunniste yhdelle metatietotietueelle. Jos metatietoja päivitetään, pysyvä tunniste ei muutu"@fi ;
+        rdfs:label                "Identifier"@en , "Metatietojen tunniste"@fi ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-05-17T10:28:01.963+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:d2c289ed-eca9-427f-94cf-7ca649d86e34>
+        rdfs:comment              "Date on which the resource was changed."@en , "Ajankohta, jolloin tietyllä tunnisteella merkittyä metatietotietuetta on viimeksi päivitetty"@fi ;
+        rdfs:label                "Date Modified"@en , "Metatietojen muokkaamisaika"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T10:28:16.798+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "modified" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:date ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:modified .
+
+<urn:uuid:dbbc3be6-1108-466c-9055-82cbf51b7c2f>
+        rdfs:comment              "データセットの主要カテゴリー。データセットは複数のテーマを持つことができます。"@ja , "التصنيف الرئيسي لقائمة البيانات. قائمة البيانات يمكن أن تملك أكثر من تصنيف رئيسي واحد."@ar , "La catégorie principale du jeu de données. Un jeu de données peut avoir plusieurs thèmes."@fr , "La categoría principal del conjunto de datos. Un conjunto de datos puede tener varios temas."@es , "Η κύρια κατηγορία του συνόλου δεδομένων. Ένα σύνολο δεδομένων δύναται να έχει πολλαπλά θέματα."@el , "The main category of the dataset. A dataset can have multiple themes. Themes are concepts which relate to the content of the dataset, describe the dataset or express its topic or meaning."@en , "Aineistoon liittyvät teemat. Teemojen määrittelyssä käytetään käsitejärjestelmiä."@fi ;
+        rdfs:label                "tema"@es , "テーマ/カテゴリー"@ja , "Θέμα"@el , "thème"@fr , "التصنيف"@ar , "Theme"@en , "Teema"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  13 ;
+        sh:path              <http://www.w3.org/ns/dcat#theme> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:5f353172-d72a-4341-8660-823b58695481>
+        rdfs:comment              "データセットを、その利用可能な配信に接続します。"@ja , "تربط قائمة البيانات بطريقة أو بشكل يسمح  الوصول الى البيانات"@ar , "Συνδέει ένα σύνολο δεδομένων με μία από τις διαθέσιμες διανομές του."@el , "Connecte un jeu de données à des distributions disponibles."@fr , "Conecta un conjunto de datos a una de sus distribuciones disponibles"@es , "A concrete storage or expression format for the data (or other type of distribution) in the dataset, for example a file, a database or a query interface to the data."@en , "Konkreettinen tallennus- tai esitysmuoto aineiston tiedoille, esimerkiksi tiedosto, tietokanta tai kyselyrajapinta"@fi ;
+        rdfs:label                "distribution"@fr , "توزيع"@ar , "データセット配信"@ja , "distribución"@es , "διανομή"@el , "Distribution"@en , "Aineiston jakelu"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  21 ;
+        sh:path              <http://www.w3.org/ns/dcat#distribution> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Distribution> .
+
+<urn:uuid:b371b11c-5bda-43f7-a1f1-43274689e5a8>
+        rdfs:comment              "Μία λέξη-κλειδί ή μία ετικέτα που περιγράφει το σύνολο δεδομένων."@el , "Una palabra clave o etiqueta que describa al conjunto de datos."@es , "كلمة  مفتاحيه توصف قائمة البيانات"@ar , "データセットを記述しているキーワードまたはタグ。"@ja , "Un mot-clé ou étiquette décrivant un jeu de donnnées."@fr , "A keyword or tag describing the dataset. It is recommended to use a controlled vocabulary, ontology or classification when choosing keywords."@en , "Sanoja, jotka liittyvät tavalla tai toisella aineiston sisältöön, luonnehtivat aineistoa tai kertovat sen asiayhteydestä tai merkityksestä. On suositeltavaa käyttää kontrolloitua sanastoa, ontologiaa tai luokitusta, kun termejä valitaan."@fi ;
+        rdfs:label                "Keyword"@en , "Asiasana"@fi , "palabra clave"@es , "キーワード/タグ"@ja , "كلمة  مفتاحية "@ar , "λέξη-κλειδί"@el , "mot-clés "@fr ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:example              "Paituli" ;
+        sh:datatype               xsd:string ;
+        sh:index                  12 ;
+        sh:path              <http://www.w3.org/ns/dcat#keyword> .
+
+<urn:uuid:1ef0f3b6-730b-478a-a026-3d36c02cc3fb>
+        rdfs:comment              "A name given to the resource."@en , "Tutkimusaineistokatalogin nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Title"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T12:53:10.496+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  0 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:title .
+
+<urn:uuid:1d1224f6-ed81-4332-931a-dc6244d836a9>
+        rdfs:comment              "A free-text account of the catalog"@en , "Tutkimusaineistokatalogin vapaamuotoinen kuvaus"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T12:53:20.575+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  1 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:b8418723-820d-43da-9546-3fa59bad48de>
+        rdfs:comment              "The language of the catalog. This refers to the language used in the textual metadata describing titles, descriptions, etc. of the datasets in the catalog"@en , "Pääasiallinen kieli, joka on käytössä katalogissa ja tutkimusaineistojen kuvailussa"@fi ;
+        rdfs:label                "Kieli"@fi , "Language"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T12:53:33.384+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "language" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  2 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:language ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#LinguisticSystem> .
+
+<urn:uuid:a4563bae-3d04-41f8-afe7-8a7659107a87>
+        rdfs:comment              "A homepage for some thing." , "The homepage of the catalog"@en , "Tutkimusaineistokatalogin kotisivun osoite"@fi ;
+        rdfs:label                "Homepage"@en , "Kotisivu"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T12:54:07.515+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "homepage" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:path              foaf:homepage ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Document> .
+
+<urn:uuid:fe10a95e-38e3-4872-8010-c22e550083ef>
+        rdfs:comment              "This describes the rights under which the catalog can be used/reused and not the datasets. Even if theses rights apply to all the catalog datasets and distributions, it should be replicated on each distribution"@en , "Tutkimusaineistokatalogiin liitetyt yleiset käyttöoikeudet"@fi ;
+        rdfs:label                "Rights"@en , "Oikeudet"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T12:54:56.068+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "rights" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:rights ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#RightsStatement> .
+
+<urn:uuid:973d4ee3-4869-4027-be82-392cbbc0bc56>
+        rdfs:comment              "An entity responsible for making the resource available."@en , "Taho joka on vastuussa tutkimusaineistokatalogin julkaisusta"@fi ;
+        rdfs:label                "Julkaisija"@fi , "Publisher"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T12:56:18.134+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "publisher" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  5 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:publisher ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:c41d0545-ef15-4e8d-a108-59c2663baa2e>
+        rdfs:comment              "Date on which the Catalogue was last modified"@en , "Päivämäärä, jolloin katalogi on luotu"@fi ;
+        rdfs:label                "Date Modified"@en , "Muokkausaika"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T12:56:28.557+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "modified" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:date ;
+        sh:index                  9 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:modified .
+
+<urn:uuid:1fcf2707-f23e-4018-b6e0-bd2764069d54>
+        rdfs:comment              "Date of formal issuance (e.g., publication, release date) of the catalogue."@en , "Päivämäärä jolloin katalogi on luotu"@fi ;
+        rdfs:label                "Date Issued"@en , "Julkaisuaika"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T12:56:39.066+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "issued" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:date ;
+        sh:index                  10 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:issued .
+
+<urn:uuid:7036489b-4bce-47b1-903c-98b401fd4594>
+        rdfs:comment              "The primary topic of some page or document." , "Dataset described by this metadata record."@en , "Aineisto, jota tämä metatietotietue kuvailee"@fi ;
+        rdfs:label                "Primary topic"@en , "Tutkimusaineisto"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:00:00.739+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "primaryTopic" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              foaf:primaryTopic ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchDataset> .
+
+<urn:uuid:f4fecfb5-c2aa-47b3-9fb2-a6d828f605e6>
+        rdfs:comment              "This property refers to an Application Profile that the Dataset’s metadata conforms to"@en , "Viittaus soveltamisprofiilin, joka kuvailee tutkimusaineiston metatietoja"@fi ;
+        rdfs:label                "Soveltamisprofiili"@fi , "Application profile"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:00:53.115+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "conformsTo" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:conformsTo ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Document> .
+
+<urn:uuid:2fb138de-3d60-44dd-b867-94039964d695>
+        rdfs:comment              "Unique identifier for the dataset. URN or URI."@en , "yksiselitteinen pysyvä tunniste aineistolle, määritellään suhteessa hakukatalogipalveluun. URN tai URI."@fi ;
+        rdfs:label                "Dataset identifier"@en , "Aineiston primääritunniste"@fi ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-05-17T13:01:29.324+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:b842f7e4-4d0d-4517-9742-ebd7d0a8cfb0>
+        rdfs:comment              ""@en , "Aineiston muut tunnisteet.\n\nEsimerkiksi aineiston lähdepalvelussa käytetty tunniste."@fi ;
+        rdfs:label                "Other identifier"@en , "Muu tunniste"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:02:39.994+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "otherIdentifier" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  1 ;
+        sh:path              adms:identifier ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#StructuredIdentifier> .
+
+<urn:uuid:a6ebe32f-1e63-445c-8ee6-fcb89083d88b>
+        rdfs:comment              "Last date when a dataset was produced having the identifiers expressed in this metadata record. An automatic transformation process e.g. between file types is not considered an update of the content."@en , "Kertoo, milloin aineiston sisältö on viimeksi muuttunut; tarkemmin sanottuna viime ajankohta, jolloin on tuotettu aineisto, jolla on nämä (metatietotietueessa luetellut) tunnisteet. Automaattista muunnosprosessia esim. tiedostomuotojen välillä ei katsota sisällön muutokseksi."@fi ;
+        rdfs:label                "Dataset modification date"@en , "Muokkaamisaika"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:03:59.599+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "modified" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:modified .
+
+<urn:uuid:6fb7df31-2d80-4587-8b1f-49eefd6748c1>
+        rdfs:comment              "Date of formal issuance (e.g., publication) of the resource."@en , "Päivämäärä, jolloin aineisto on alunperin muodostettu"@fi ;
+        rdfs:label                "Release date"@en , "Julkaisuaika"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:04:10.703+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "issued" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:date ;
+        sh:index                  5 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:issued .
+
+<urn:uuid:06ad93be-c85d-4f3b-b62e-4fad3f688caa>
+        rdfs:comment              "An agent who has permission to distribute the dataset or who has made the dataset available."@en , "Toimija, jolla on oikeus jakaa aineistoa edelleen tai joka on asettanut aineiston julkisesti saataville."@fi ;
+        rdfs:label                "Julkaisija"@fi , "Distributor"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:04:21.532+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "publisher" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:editorialNote        "Selvitettävä julkaisijan ja jakeljan ero (SR 13.7.2016)."@fi ;
+        sh:index                  6 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:publisher ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:d4db53c0-abf0-4711-87ea-dfc72024bcb5>
+        rdfs:comment              "A person or organisation who originally produced the dataset, the original rights holder"@en , "Henkilö tai organisaatio, joka on alun perin tuottanut aineiston, alkuperäinen tekijänoikeuden haltija"@fi ;
+        rdfs:label                "Creator"@en , "Tekijä"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:04:28.091+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "creator" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  7 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:creator ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:036fc56e-1d6a-4e5d-849e-25f35e96fdb6>
+        rdfs:comment              "A person or organisation that has contributed significantly in the creation of the dataset"@en , "Henkilö tai organisaatio, joka on tekijän tai tekijäiden lisäksi osallistunut merkittävästi aineiston luomiseen"@fi ;
+        rdfs:label                "Contributor"@en , "Myötävaikuttaja"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:04:36.251+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "contributor" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  8 ;
+        sh:path              dcterms:contributor ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:99f6193c-9f35-46c5-bdbd-98b751581bf1>
+        rdfs:comment              "A person or organisation who holds the copyright of the dataset at the current moment, usually the organization of the author – this does not mean the owner of the storage media (such as a memory stick) but the rights holder"@en , "henkilö tai organisaatio, joka on aineiston tekijänoikeuden haltija nykyhetkellä, yleensä tekijän taustaorganisaatio. \n\nTällä ei tarkoiteta aineiston tallennusmedian kuten muistitikun omistajaa vaan tekijänoikeuden omistajaa"@fi ;
+        rdfs:label                "Dataset owner"@en , "Oikeudenhaltija"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:04:46.188+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "rightsHolder" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  10 ;
+        sh:maxCount               1 ;
+        sh:minCount               0 ;
+        sh:path              dcterms:rightsHolder ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:9e6111d0-9fe2-481b-b8d6-9825bc4bbc87>
+        rdfs:comment              "Textual label which concisely describes the content of the dataset. Based on the title of the dataset, a human should have a general understanding of the topic of the dataset. The title should be unique enough that it is unlikely to be used for another dataset."@en , "Tekstimuotoinen otsake, joka kuvailee aineiston sisällön tiiviisti. Aineiston nimen perusteella ihmisen tulisi saada yleiskäsitys siitä, mitä aihepiiriä aineisto käsittelee. Aineiston nimen tulee myös olla niin yksilöivä, ettei muulla aineistolla ole todennäköisesti samaa nimeä."@fi ;
+        rdfs:label                "Title"@en , "Aineiston nimi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:04:58.244+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:example              "Vuorokauden alin lämpötila, 1961-2014, 10 km, GeoTIFF" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  11 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:title .
+
+<urn:uuid:1c85c8be-bf9b-494c-a7f3-cc36db3f061d>
+        rdfs:comment              "Spatial characteristics of the resource."@en , "Alue tai paikka, jota aineisto käsittelee.  Esimerkiksi alue, jolta tiedot on kerätty tai alue, jolla tutkimuskohteena olevat henkilöt asuvat."@fi ;
+        rdfs:label                "Spatial Coverage"@en , "Maantieteellinen kattavuus"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:05:35.688+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "spatial" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  15 ;
+        sh:path              dcterms:spatial ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Location> .
+
+<urn:uuid:f326a550-b715-4838-a84c-25241dae83d3>
+        rdfs:comment              "Temporal characteristics of the resource."@en , "Ajanhetki tai jakso, jota aineisto käsittelee. Esimerkiksi aika, jolloin mittaustulokset on saatu tai aika, jolloin tutkimuskohteet ovat olleet elossa (aineistoa kerättäessä)."@fi ;
+        rdfs:label                "Temporal Coverage"@en , "Ajallinen kattavuus"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:05:41.015+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "temporal" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  16 ;
+        sh:path              dcterms:temporal ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#PeriodOfTime> .
+
+<urn:uuid:45a5bd87-693f-4800-9204-5c3b80a2a174>
+        rdfs:comment              "A related entity. It is recommended to use one of the subproperties."@en , "Liittyvä resurssi tai julkaisu, joka perustuu tähän aineistoon.  Julkaisu perustuu aineistoon, jos siinä olevissa johtopäätöksissä tai tuloksissa on käytetty perusteena tätä tutkimusaineistoa."@fi ;
+        rdfs:label                "Related entity"@en , "Liittyvä resurssi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:06:05.741+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "relatedEntity" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  17 ;
+        sh:path              dcterms:relation ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#RelatedEntity> .
+
+<urn:uuid:53988860-7355-46ae-9948-3edc19c9b101>
+        rdfs:comment              "Free-form description of the dataset"@en , "Aineiston vapaa kuvailu"@fi ;
+        rdfs:label                "Description"@en , "Aineiston kuvailu"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:06:21.355+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:example              "Tämä aineisto on osaa FMI ClimGrid aineistoa, joka on päivittäinen ilmastohila-aineisto Suomelle ..." ;
+        sh:datatype               rdf:langString ;
+        sh:index                  19 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:dd9d3833-68d5-4edf-b96f-ebbe16deabff>
+        rdfs:comment              "A name given to the resource."@en , "Entiteetin nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Title"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:15:07.887+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  0 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:title .
+
+<urn:uuid:093e3285-b224-4fbc-9fe1-79e4bd710da7>
+        rdfs:comment              "An account of the resource."@en , "Entiteetin kuvaus"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:15:17.994+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:43ef0476-d7ff-463e-b0bc-2199cc19dc62>
+        rdfs:comment              "Describes the concept of the variable"@en , "Muuttujan käsitte"@fi ;
+        rdfs:label                "Käsite"@fi , "Concept"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:18:58.676+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "concept" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:minCount               0 ;
+        sh:path              <http://rdf-vocabulary.ddialliance.org/discovery#concept> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:89e4ab34-2b70-4162-8b45-1305aeaeac81>
+        rdfs:comment              "Indicates the Universe(s) of represented variable"@en , "Käsitettä tarkentava käsiteulottuvuus"@fi ;
+        rdfs:label                "Universe"@en , "Ulottuvuus"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:19:37.033+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "universe" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:minCount               0 ;
+        sh:path              <http://rdf-vocabulary.ddialliance.org/discovery#universe> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:230819de-10fe-44e1-9221-564b2fe19b5e>
+        rdfs:comment              "Defines the possible values of a variable"@en , "Muuttujalle määritellyt mahdolliset arvot"@fi ;
+        rdfs:label                "Arvoalue"@fi , "Representation"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:20:12.416+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "representation" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:minCount               0 ;
+        sh:path              <http://rdf-vocabulary.ddialliance.org/discovery#representation> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ConceptScheme> .
+
+<urn:uuid:d2ce047c-5664-4aad-b81a-523eafd31c06>
+        rdfs:comment              "Preferred label for the variable"@en , "Muuttujan nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Preferred label"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:21:22.156+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "prefLabel" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  0 ;
+        sh:minCount               1 ;
+        sh:path              skos:prefLabel .
+
+<urn:uuid:d18384d7-77dd-4fd4-95d9-cd164c7f6d1e>
+        rdfs:comment              "An account of the resource."@en , "Muuttujan kuvaus"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:21:50.276+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  1 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:c866e1dc-fd01-40dd-b883-85c3e053bcc8>
+        rdfs:comment              "Ceci peut être tout type d'URL qui donne accès à une distribution du jeu de données. Par exemple, un lien à une page HTML contenant un lien au jeu de données, \n\t\t\t\t\tun Flux RSS, un point d'accès SPARQL. Utilisez le lorsque votre catalogue ne contient pas d'information sur quoi il est ou quand ce n'est pas téléchargeable."@fr , "Μπορεί να είναι οποιουδήποτε είδους URL που δίνει πρόσβαση στη διανομή ενός συνόλου δεδομένων. Π.χ. ιστοσελίδα αρχικής πρόσβασης, \n          μεταφόρτωση, feed URL, σημείο διάθεσης SPARQL. Να χρησιμοποιείται όταν ο κατάλογος δεν περιέχει πληροφορίες εαν πρόκειται ή όχι για μεταφορτώσιμο αρχείο."@el , "أي رابط يتيح الوصول إلى البيانات. إذا كان الرابط هو ربط مباشر لملف يمكن تحميله استخدم الخاصية downloadURL"@ar , "データセットの配信にアクセス権を与えるランディング・ページ、フィード、SPARQLエンドポイント、その他の種類の資源。"@ja , "Puede ser cualquier tipo de URL que de acceso a una distribución del conjunto de datos, e.g., página de aterrizaje, descarga,\n\t\t\t\t\tURL feed, punto de acceso SPARQL. Utilizado cuando su catálogo de datos no tiene información sobre donde está o cuando no se puede descargar"@es , "Could be any kind of URL that gives access to a distribution of the dataset. E.g. landing page download, feed URL, SPARQL endpoint. Use when your catalog does not have information on which it is or when it is definitely not a download."@en , "Jakelun käyttöosoite"@fi ;
+        rdfs:label                "access URL"@en , "رابط وصول"@ar , "URL d'accès"@fr , "URL πρόσβασης"@el , "URL de acceso"@es , "アクセスURL"@ja , "Käyttöosoite"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.w3.org/ns/dcat#accessURL> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Document> .
+
+<urn:uuid:906038dc-48af-46cf-9b56-3188b838d161>
+        rdfs:comment              "Το μέγεθος μιας διανομής σε bytes."@el , "バイトによる配信のサイズ。"@ja , "El tamaño de una distribución en bytes"@es , "The size of a distribution in bytes."@en , "La taille de la distribution en octects"@fr , "الحجم بالبايتات "@ar , "Jakelun tiedostokoko"@fi ;
+        rdfs:label                "μέγεθος σε bytes"@el , "taille en octects"@fr , "tamaño en bytes"@es , "バイト・サイズ"@ja , "الحجم بالبايت"@ar , "Byte size"@en , "Tiedostokoko"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:identifier        "" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  9 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.w3.org/ns/dcat#byteSize> .
+
+<urn:uuid:d4929fd6-0d16-4da4-8c21-330a926b1d17>
+        rdfs:comment              "Este es un enlace directo a un fichero descargable en un formato dado, e.g., fichero CSV o RDF. El \n          formato es descrito por las propiedades de la distribución dc:format y/o dcat:mediaType"@es , "Ceci est un lien direct à un fichier téléchargeable en un format donnée. Exple fichier CSV ou RDF. Le format\n\t\t\t\t\test décrit par les propriétés de distribution dc:format et/ou dcat:mediaType"@fr , "Είναι ένας σύνδεσμος άμεσης μεταφόρτωσης ενός αρχείου σε μια δεδομένη μορφή. Π.χ. ένα αρχείο CSV ή RDF. \n\t\t\t\t\tΗ μορφη αρχείου περιγράφεται από τις ιδιότητες dc:format ή/και dcat:mediaType της διανομής"@el , "dcat:downloadURLはdcat:accessURLの特定の形式です。しかし、DCATプロファイルが非ダウンロード・ロケーションに対してのみaccessURLを用いる場合には、より強い分離を課すことを望む可能性があるため、この含意を強化しないように、DCATは、dcat:downloadURLをdcat:accessURLのサブプロパティーであると定義しません。"@ja , "رابط مباشر لملف يمكن تحميله. نوع الملف يتم توصيفه باستخدام الخاصية dc:format dcat:mediaType "@ar , "This is a direct link to a downloadable file in a given format. E.g. CSV file or RDF file. The format is described by the distribution's dc:format and/or dcat:mediaType"@en , "Jakelun latausosoite"@fi ;
+        rdfs:label                "URL de descarga"@es , "URL μεταφόρτωσης"@el , "ダウンロードURL"@ja , "رابط تحميل"@ar , "download URL"@en , "URL de téléchargement"@fr , "Latausosoite"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  5 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.w3.org/ns/dcat#downloadURL> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Document> .
+
+<urn:uuid:b40f2612-b11b-4bff-b876-405f8e75ee2e>
+        rdfs:comment              "A name given to the distribution."@en , "Jakelun nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Title"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:23:13.009+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:title .
+
+<urn:uuid:2df09a34-d62c-41f0-b764-74f88af78e84>
+        rdfs:comment              "Free-text account of the distribution."@en , "Jakelun kuvaus"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:23:22.029+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:a54407b3-352b-4c01-875b-1bb3688f2f22>
+        rdfs:comment              "Date on which the resource was changed."@en , "Hetki jolloin jakelua on viimeksi muokattu"@fi ;
+        rdfs:label                "Date Modified"@en , "Muokkaushetki"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:23:28.71+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "modified" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:dateTime ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:modified .
+
+<urn:uuid:84c92d7d-393f-4a71-a735-da9c36462597>
+        rdfs:comment              "Checksum of the manifestation"@en , "Jakelun tarkistussumma"@fi ;
+        rdfs:label                "Checksum"@en , "Tarkistussumma"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:25:40.337+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "checksum" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  6 ;
+        sh:maxCount               1 ;
+        sh:path              <http://spdx.org/rdf/terms#checksum> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#DatasetChecksum> .
+
+<urn:uuid:9baa0ec8-f994-443d-9793-595ebe498e18>
+        rdfs:comment              "Used checksum algortihm"@en , "Käytetty algoritmi"@fi ;
+        rdfs:label                "Algorithm"@en , "Algoritmi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:27:57.478+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "algorithm" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              <http://spdx.org/rdf/terms#algorithm> .
+
+<urn:uuid:0d4bcc55-523f-4d08-a37c-0fdb8923d630>
+        rdfs:comment              "Value of the checksum. xsd:hexBinary"@en , "Tarkistussumman arvo"@fi ;
+        rdfs:label                "Arvo"@fi , "Checksum value"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T13:29:44.906+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "checksumValue" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:hexBinary ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              <http://spdx.org/rdf/terms#checksumValue> .
+
+<urn:uuid:13212aef-1874-41d0-989b-b3039cc4a009>
+        rdfs:comment              "This property contains a name of the agent. This property can be repeated for different versions of the name (e.g. the name in different languages)"@en , "A name for some thing." , "Toimijan nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Name"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:00:29.728+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "name" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              foaf:name .
+
+<urn:uuid:4016201d-b805-4ec3-8e31-884fcd4089ea>
+        rdfs:comment              "An unambiguous reference to the resource within a given context."@en , "Toimijan yksilöllinen tunniste joka mahdollistaa toimijaan viittaamisen ja toimijan tietojen hakemisen keskitetystä organisaatiorekisteristä. \n\nSuositellaan käytettäväksi ORCID tunnistetta."@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-05-17T14:00:54.194+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:example              "http://orcid.org/0000-0002-1825-0097" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:be5b07c6-8c74-4da6-93cf-2cdb47fe53af>
+        rdfs:comment              "A homepage for some thing." , "Toimijan verkko-osoite"@fi ;
+        rdfs:label                "Homepage"@en , "Verkko-osoite"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:02:30.487+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "homepage" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:path              foaf:homepage ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Document> .
+
+<urn:uuid:e875e6c2-9e17-4c45-8c3a-8fd35b4737cc>
+        rdfs:comment              "A related resource in which the described resource is physically or logically included."@en , "Kuvaa toimijan kuulumista organisaatioon (toiseen toimijaan)."@fi ;
+        rdfs:label                "Organisaatio"@fi , "Is Part Of"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:04:10.575+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "isPartOf" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  5 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:isPartOf ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:79f5fe95-5a30-44c2-9860-3303b9605ce4>
+        rdfs:comment              "Free account of the rights"@en , "Oikeuksien kuvaus"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:16:57.562+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  0 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:3344c79f-782e-407c-9bc1-563032852345>
+        rdfs:comment              "The nature or genre of the resource."@en , "Viittaus luokituksen arvoon joka kuvaa aineiston saatavuutta"@fi ;
+        rdfs:label                "Type"@en , "Saatavuusluokka"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:17:17.386+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "type" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:editorialNote        "Add accessibility classification here ?"@en ;
+        sh:index                  1 ;
+        sh:path              dcterms:type ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:0b8f9320-ac2f-4198-8f47-a3c46d8d5996>
+        rdfs:comment              "Date (often a range) that the resource became or will become available."@en , "Päivämäärä jolloin aineisto on saatavilla oikeuksien kuvauksien mukaisesti"@fi ;
+        rdfs:label                "Date Available"@en , "Saatavilla"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:17:36.458+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "available" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:date ;
+        sh:index                  2 ;
+        sh:path              dcterms:available .
+
+<urn:uuid:d6663041-1102-4e2d-8e9c-2416704fb2ba>
+        rdfs:comment              "Oikeuksia myöntävä taho"@fi ;
+        rdfs:label                "Toimija"@fi , "Related agent"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:23:30.344+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "hasRightRelatedAgent" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  3 ;
+        sh:path              <http://www.loc.gov/premis/rdf/v1#hasRightRelatedAgent> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:145fb47f-7446-4172-a2ca-947577dac6ae>
+        rdfs:comment              "A legal document giving official permission to do something with the resource."@en , "Oikeuksia määrittelevä lisenssi"@fi ;
+        rdfs:label                "License"@en , "Lisenssi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:24:11.078+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "license" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  4 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:license ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchDataLicenseDocument> .
+
+<urn:uuid:402f88eb-6d80-4961-9c2e-7bc9bc90a90d>
+        rdfs:comment              "An unambiguous reference to the resource within a given context."@en , "Lisenssin yksilöllinen tunniste. URN tai URI."@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-05-17T14:25:14.747+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:2d90641e-b224-43ac-9329-0ecd7e9875b9>
+        rdfs:comment              "A name given to the resource."@en , "Lisenssin nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Title"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:25:23.171+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:title .
+
+<urn:uuid:141f3508-35eb-4748-8091-e19e4b755c24>
+        rdfs:comment              "The nature or genre of the resource."@en , "Lisenssin tyyppi"@fi ;
+        rdfs:label                "Tyyppi"@fi , "Type"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:25:59.245+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "type" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:editorialNote        "Tähän päivitetään ATT lisenssiluokitus"@en ;
+        sh:index                  3 ;
+        sh:path              dcterms:type ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:cbd34cb9-e76c-4d20-a10f-8f2568930857>
+        rdfs:comment              "Literal value of the identifier"@en , "Tunnisteen arvo"@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier value"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:26:51.928+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "notation" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              skos:notation .
+
+<urn:uuid:56160468-eda9-4023-ba85-bce6507d76ea>
+        rdfs:comment              "Provider agency for the identifier"@en , "Toimija joka on myöntänyt tunnisteen"@fi ;
+        rdfs:label                "Provider"@en , "Myöntäjä"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:27:25.81+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "creator" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:creator ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:1404ea4b-6ca4-47f8-92fa-47fe2edd8d00>
+        rdfs:comment              "a type of the identifier"@en , "Tunnisteen tyyppi"@fi ;
+        rdfs:label                "Tyyppi"@fi , "Type"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:28:09.183+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "type" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:type ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:c64c03cd-29cd-4128-a783-203cccbf0dcb>
+        rdfs:comment              "Resource that was used in this activity"@en , "Tapahtumaan liittyvä väline"@fi ;
+        rdfs:label                "Used entity"@en , "Väline"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  5 ;
+        sh:path              prov:used ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#RelatedEntity> .
+
+<urn:uuid:441f0e70-178b-406c-8f60-759e5ce5ed34>
+        rdfs:comment              "An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity."@en , "Tapahtumaan liittyvät toimijat"@fi ;
+        rdfs:label                "Toimija"@fi , "wasAssociatedWith"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  6 ;
+        sh:path              prov:wasAssociatedWith ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:27f7fb07-f542-4d39-bab4-94e7cc464009>
+        rdfs:comment              "The description of the activity"@en , "Tapahtuman kuvaus"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:35:30.451+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:9c6ad96a-c719-4680-8a35-868beafb8399>
+        rdfs:comment              "The nature or genre of the resource."@en , "Tapahtuman tyyppi"@fi ;
+        rdfs:label                "Tyyppi"@fi , "Type"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:36:06.139+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "type" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:type ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:212e7054-1f9d-4922-ac2e-99ad4b77517c>
+        rdfs:comment              "Temporal characteristics of the resource."@en , "Tapahtuman ajallinen kattavuus"@fi ;
+        rdfs:label                "Temporal Coverage"@en , "Ajallinen kattavuus"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:36:27.975+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "temporal" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:temporal ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#PeriodOfTime> .
+
+<urn:uuid:eeba5700-c76f-404f-bbc2-b4a89c812abd>
+        rdfs:comment              "Spatial characteristics of the resource."@en , "Tapahtuman paikka"@fi ;
+        rdfs:label                "Spatial Coverage"@en , "Paikka"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:36:35.049+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "spatial" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:spatial ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Location> .
+
+<urn:uuid:bc1fa71f-6a7c-467a-aeb8-2fa845332742>
+        rdfs:comment              "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en , "Kuvaus aineistoon tai aineiston keruutapaan tehdystä muutoksesta"@fi ;
+        rdfs:label                "Provenance"@en , "Aineiston historiatieto"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:37:40.37+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "provenance" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  24 ;
+        sh:path              dcterms:provenance ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Activity> .
+
+<urn:uuid:dc1d46a3-2526-42e2-8204-4a49080a82f3>
+        rdfs:comment              "Variable that was affected by the activity"@en , "Muuttuja jota tapahtumassa käsiteltiin tai muutettiin"@fi ;
+        rdfs:label                "Variable"@en , "Muuttuja"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:48:35.89+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "variable" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  7 ;
+        sh:path              <http://rdf-vocabulary.ddialliance.org/discovery#variable> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Variable> .
+
+<urn:uuid:a532d3f5-05a1-41de-9e74-440618369fd7>
+        rdfs:comment              "A legal document giving official permission to do something with the resource."@en , "Jakelukohtainen lisenssitieto"@fi ;
+        rdfs:label                "License"@en , "Lisenssi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:50:39.476+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "license" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  7 ;
+        sh:path              dcterms:license ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchDataLicenseDocument> .
+
+<http://www.w3.org/ns/locn#>
+        a                               rdfs:Resource ;
+        rdfs:label                      "Location vocabulary"@en ;
+        iow:isResolved                  true ;
+        dcap:preferredXMLNamespaceName  "http://www.w3.org/ns/locn#" ;
+        dcap:preferredXMLNamespacePrefix
+                "locn" .
+
+<http://iow.csc.fi/ns/att#PeriodOfTime>
+        a                   sh:Shape ;
+        rdfs:comment        "An interval of time that is named or defined by its start and end dates."@en , "Ajanjakso jolla on alku- ja päättymishetki"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Ajanjakso"@fi , "Period of Time"@en ;
+        dcterms:created     "2016-09-28T14:02:12"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:571c8b01-ccb9-4b45-8066-b2039708792e" ;
+        dcterms:modified    "2017-02-02T15:44:29.925+02:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:9fc23f1f-3735-42d7-a36e-a48ae874e1d2> , <urn:uuid:7a4a9439-25c8-4894-8a59-08092020d60b> ;
+        sh:targetClass       dcterms:PeriodOfTime .
+
+<urn:uuid:9fc23f1f-3735-42d7-a36e-a48ae874e1d2>
+        rdfs:comment              "Ajanjakson alkuhetki"@fi ;
+        rdfs:label                "Start of the pediod"@en , "Alkuhetki"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T14:25:14.352+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "startDate" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:dateTime ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:path              schema:startDate .
+
+<urn:uuid:7a4a9439-25c8-4894-8a59-08092020d60b>
+        rdfs:comment              "Ajanjakson päättymishetki"@fi ;
+        rdfs:label                "Päättymishetki"@fi , "End of the period"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T14:25:35.154+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "endDate" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:dateTime ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:path              schema:endDate .
+
+<urn:uuid:85fbe9c4-d88c-4694-8268-873da7de0d6c>
+        rdfs:comment              "This property contains a description of the differences between this version and a previous version of the Dataset. This property can be repeated for parallel language versions of the version notes."@en , "Lisätietoa muutoksista aiempiin versioihin liittyen"@fi ;
+        rdfs:label                "Version notes"@en , "Versiotieto"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T15:23:33.245+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "versionNotes" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:path              adms:versionNotes .
+
+<urn:uuid:68030600-309c-4019-a03d-4af405f5debf>
+        rdfs:comment              "Preferred bibliographic reference for the resource."@en , "Suositeltu malliviittaus aineistoon"@fi ;
+        rdfs:label                "Preferred Bibliographic Citation"@en , "Malliviittaus"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T15:18:58.878+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "bibliographicCitation" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  22 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:bibliographicCitation .
+
+<http://iow.csc.fi/ns/att#Location>
+        a                   sh:Shape ;
+        rdfs:comment        "A spatial region or named place."@en , "Maantieteellinen sijainti tai nimetty paikka"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Sijainti"@fi , "Location"@en ;
+        dcterms:created     "2016-09-28T15:54:46"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:a95fc6c0-cfa9-48f5-b4c2-5f3691642bcf" ;
+        dcterms:modified    "2016-10-24T12:29:13.018+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:41e725ff-c30b-44f8-a0da-381e5cbd1249> , <urn:uuid:3419068f-fa4f-4085-acc7-c1e3f048ee4f> , <urn:uuid:ea2f4fcb-74c5-454c-a7a4-2ba37bba378f> , <urn:uuid:33d56580-4511-4f03-8b79-1509f9d131e6> , <urn:uuid:1395b8c9-5704-4a83-9894-b18c3a736b85> ;
+        sh:targetClass       dcterms:Location .
+
+<urn:uuid:41e725ff-c30b-44f8-a0da-381e5cbd1249>
+        rdfs:comment              "A geographic name is a proper noun applied to a spatial object. Taking the example used in the relevant INSPIRE data specification (page 18), the following are all valid geographic names for the Greek capital:\n- Αθήνα (the Greek endonym written in the Greek script)\n- Athína (the standard Romanisation of the endonym)\n- Athens (the English language exonym)\nFor INSPIRE-conformant data, provide the metadata for the geographic name using a skos:Concept as a datatype."@en , "Maantieteellinen nimi jota käytetään sijainnista"@fi ;
+        rdfs:label                "Geographic name"@en , "Maantieteellinen nimi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T15:56:53.427+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "geographicName" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.w3.org/ns/locn#geographicName> .
+
+<urn:uuid:3419068f-fa4f-4085-acc7-c1e3f048ee4f>
+        rdfs:comment              "The WGS84 latitude of a SpatialThing (decimal degrees)."@en , "Leveysaste desimaalina"@fi ;
+        rdfs:label                "Latitude"@en , "Leveysaste"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T15:57:36.249+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "lat" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:decimal ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.w3.org/2003/01/geo/wgs84_pos#lat> .
+
+<urn:uuid:ea2f4fcb-74c5-454c-a7a4-2ba37bba378f>
+        rdfs:comment              "The WGS84 longitude of a SpatialThing (decimal degrees)."@en , "Pituusaste desimaalina"@fi ;
+        rdfs:label                "Longitude"@en , "Pituusaste"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T15:58:51.204+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "long" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:decimal ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:minCount               0 ;
+        sh:path              <http://www.w3.org/2003/01/geo/wgs84_pos#long> .
+
+<urn:uuid:33d56580-4511-4f03-8b79-1509f9d131e6>
+        rdfs:comment              "Country code"@en , "Maakoodi"@fi ;
+        rdfs:label                "Country"@en , "Maa"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T16:03:12.702+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "addressCountry" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  3 ;
+        sh:path              schema:addressCountry .
+
+<urn:uuid:1395b8c9-5704-4a83-9894-b18c3a736b85>
+        rdfs:comment              "The complete address written as a string, with or without formatting."@en , "Sijainnin koko osoite"@fi ;
+        rdfs:label                "Full address"@en , "Koko osoite"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T16:08:57.039+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "fullAddress" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.w3.org/ns/locn#fullAddress> .
+
+<http://iow.csc.fi/ns/att#discipline>
+        a                   owl:ObjectProperty ;
+        rdfs:comment        "Scientific discipline whose data collection has produced the dataset"@en ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Discipline"@en ;
+        rdfs:range          skos:Concept ;
+        rdfs:subPropertyOf  <http://www.w3.org/ns/dcat#theme> ;
+        dcterms:created     "2016-09-28T16:22:55"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:b8018125-6b87-4f59-a7f1-c941e0727aea" ;
+        dcterms:modified    "2016-09-28T16:22:55"^^xsd:dateTime ;
+        dcterms:subject     <urn:uuid:c1797afd-35d9-4776-9072-d50cd379eef8> ;
+        owl:versionInfo     "Unstable" .
+
+<urn:uuid:c1797afd-35d9-4776-9072-d50cd379eef8>
+        a                skos:Concept , iow:ConceptSuggestion ;
+        skos:definition  "Scientific discipline whose data collection has produced the dataset"@en ;
+        skos:inScheme    <http://iow.csc.fi/ns/att/skos#> ;
+        skos:prefLabel   "Discipline"@en .
+
+<urn:uuid:25d54dca-cdd5-4e28-ad8a-dc337b870e86>
+        rdfs:comment              "Related dataset. It is recommended to use some of the subproperties of related."@en , "Liittyvä aineisto"@fi ;
+        rdfs:label                "Related dataset"@en , "Liittyvä aineisto"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T16:15:29.203+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "relation" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:editorialNote        "List of supported subproperties is needed!"@en ;
+        sh:index                  18 ;
+        sh:path              dcterms:relation ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchDataset> .
+
+<urn:uuid:56c921b8-d012-4c84-9004-917d0765eabb>
+        rdfs:comment              "Scientific discipline whose data collection has produced the dataset"@en , "Tieteenala, jonka aineistonkeruun tuloksena aineisto on syntynyt."@fi ;
+        rdfs:label                "Field of science"@en , "Aineiston tieteenala"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T16:23:21.277+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "discipline" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  20 ;
+        sh:path              <http://iow.csc.fi/ns/att#discipline> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:7fa79c1a-5cb4-40a7-af7b-02072d3792ee>
+        rdfs:comment              "Rakenteistetusti kuvataan, saako aineiston käyttöön avoimesti vai pitääkö käyttölupaa hakea, ja onko hakemusprosessi automatisoitu vai manuaalinen."@fi ;
+        rdfs:label                "Access rights"@en , "Saantirajoitteet"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T16:28:27.61+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "accessRights" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  23 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.w3.org/ns/dcat#accessRights> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#RightsStatement> .
+
+<http://iow.csc.fi/ns/att#Concept>
+        a                   sh:Shape ;
+        rdfs:comment        "Concept defined in some Concept Scheme"@en , "Käsitejärjestelmässä määritelty käsite"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Käsite"@fi , "Concept"@en ;
+        dcterms:created     "2016-09-28T16:33:30"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:bd0e6b66-5bae-4962-a948-308cf7574d99" ;
+        dcterms:modified    "2016-10-24T13:13:53.685+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:4020025f-ad0e-429e-8941-e858270d5326> , <urn:uuid:9cc1ac0b-b356-427f-86a9-62f9af2ea118> , <urn:uuid:e528c03e-8126-478e-9ff4-5d776938d3e1> , <urn:uuid:08158edf-24b8-471a-819b-639897fa6d79> ;
+        sh:targetClass       skos:Concept .
+
+<urn:uuid:4020025f-ad0e-429e-8941-e858270d5326>
+        rdfs:comment              "Relates a resource (for example a concept) to a concept scheme in which it is included."@en , "Liittää käsitteen käsitejärjestelmään"@fi ;
+        rdfs:label                "Is in scheme"@en , "Kuuluu"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T16:33:55.293+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "inScheme" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:class                  skos:ConceptScheme ;
+        sh:index                  2 ;
+        sh:path              skos:inScheme ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ConceptScheme> .
+
+<http://iow.csc.fi/ns/att#ConceptScheme>
+        a                   sh:Shape ;
+        rdfs:comment        "Käsitteitä luokitteleva ja määrittelevä SKOS käsitejärjestelmä"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Concept Scheme"@en , "Käsitejärjestelmä"@fi ;
+        dcterms:created     "2016-09-28T16:34:27"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:498df018-f8f0-4f99-aa5c-617bb0964214" ;
+        dcterms:modified    "2016-10-24T13:14:52.63+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:98f8cb6b-fe57-4ad9-a2a5-38065ad3e081> , <urn:uuid:8f509c52-b721-4f2f-b0dc-69c696721040> ;
+        sh:targetClass       skos:ConceptScheme .
+
+<urn:uuid:98f8cb6b-fe57-4ad9-a2a5-38065ad3e081>
+        rdfs:comment              "The preferred lexical label for a resource, in a given language. A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag. The range of skos:prefLabel is the class of RDF plain literals. skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise\n      disjoint properties."@en , "Käsitejärjestelmän nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Preferred label"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-28T16:34:40.372+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "prefLabel" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  0 ;
+        sh:path              skos:prefLabel .
+
+<urn:uuid:f0809fee-9eba-4a8f-9b6e-613cd346f239>
+        rdfs:comment              "Unique identifier for the distribution from file: scheme"@en , "Jakelujärjestelmäkohtaisesti yksilöivä URI-tunniste. Yksilöintiin voidaan käyttää http: tai file: järjestelmää."@fi ;
+        rdfs:label                "Identifier"@en , "Jakelun tunniste"@fi ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-09-28T16:41:31.053+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:example              "file://etc/data/abc.txt" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:9cc1ac0b-b356-427f-86a9-62f9af2ea118>
+        rdfs:comment              "This is the IRI identifier for the concept"@en , "Käsitteen yksilöivä tunniste. URN tai URI."@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-09-30T10:53:56.7+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:e528c03e-8126-478e-9ff4-5d776938d3e1>
+        rdfs:comment              "The preferred lexical label for a resource, in a given language. A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag. The range of skos:prefLabel is the class of RDF plain literals. skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise\n      disjoint properties."@en , "Käsitteestä käytettävä nimitys"@fi ;
+        rdfs:label                "Preferred label"@en , "Suositeltu termi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-30T10:55:10.038+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "prefLabel" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  1 ;
+        sh:minCount               1 ;
+        sh:path              skos:prefLabel .
+
+<urn:uuid:08158edf-24b8-471a-819b-639897fa6d79>
+        rdfs:comment              "A statement or formal explanation of the meaning of a concept."@en , "Käsitteen formaali määritelmä"@fi ;
+        rdfs:label                "Määritelmä"@fi , "Definition"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-09-30T10:56:01.441+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "definition" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  3 ;
+        sh:minCount               1 ;
+        sh:path              skos:definition .
+
+<http://iow.csc.fi/ns/att#Document>
+        a                   sh:Shape ;
+        rdfs:comment        "A document in the web. Could be a homepage or link to a file."@en , "Dokumentoitu verkko-osoite"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Documented link"@en , "Dokumentoitu linkki"@fi ;
+        dcterms:created     "2016-10-04T14:12:48"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:12e8f331-db46-4bd5-8759-d00bfcb62c50" ;
+        dcterms:modified    "2016-10-24T13:19:38.933+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:2cf07e8c-47e0-40e1-b313-8418170a4325> , <urn:uuid:8a19b6be-f298-4f43-9c12-25b6b1a89640> , <urn:uuid:01be7902-aa03-40f2-995a-82face19bf18> ;
+        sh:targetClass       foaf:Document .
+
+<urn:uuid:2cf07e8c-47e0-40e1-b313-8418170a4325>
+        rdfs:comment              "URL of the homepage"@en , "Verkko-osoitteen URL"@fi ;
+        rdfs:label                "URL"@en , "URL osoite"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T14:14:37.92+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:8a19b6be-f298-4f43-9c12-25b6b1a89640>
+        rdfs:comment              "A name given to the document"@en , "Linkin nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Title"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T14:16:10.559+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  1 ;
+        sh:path              dcterms:title .
+
+<http://iow.csc.fi/ns/att#LinguisticSystem>
+        a                   sh:Shape ;
+        rdfs:comment        "A system of signs, symbols, sounds, gestures, or rules used in communication."@en , "Rakenteinen kuvaus käytetystä kielestä"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Kieli"@fi , "Language"@en ;
+        dcterms:created     "2016-10-04T14:22:50"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:56dab5e8-28d4-441b-b9b6-7658610ddba8" ;
+        dcterms:modified    "2016-11-25T09:35:19.187+02:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:276314ba-3831-4371-941d-c58a00e992d7> , <urn:uuid:de50a6ad-3da2-4b12-b38a-802a6261c665> ;
+        sh:targetClass       dcterms:LinguisticSystem .
+
+<urn:uuid:276314ba-3831-4371-941d-c58a00e992d7>
+        rdfs:comment              "Language identifier. URI from http://publications.europa.eu/mdr/authority/language/"@en , "Kielen URI tunniste. Käytetty tunnistejärjestelmä: http://publications.europa.eu/mdr/authority/language/"@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-10-04T14:23:31.098+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:de50a6ad-3da2-4b12-b38a-802a6261c665>
+        rdfs:comment              "ISO 639-3 string representing the language"@en , "ISO 639-3 kielitunniste"@fi ;
+        rdfs:label                "Language code"@en , "Kielikoodi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T14:24:42.68+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "notation" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:example              "fin" ;
+        sh:datatype               xsd:string ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               0 ;
+        sh:path              skos:notation .
+
+<urn:uuid:01be7902-aa03-40f2-995a-82face19bf18>
+        rdfs:comment              "Description of the link. For example to be used as hover text."@en , "Linkin kuvausteksti"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T14:42:36.645+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  2 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:5c054629-b083-4502-811b-f5ac438c6fee>
+        rdfs:comment              "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system.  An unambiguous reference to the resource within a given context."@en , "Entiteetille määritelty yksilöllinen tunniste. URN tai URI."@fi ;
+        rdfs:label                "Yksilöivä tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-10-04T14:46:13.909+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:b7704fba-4a73-4055-987d-9b7b99014ee8>
+        rdfs:comment              "Email address."@en , "Toimijan sähköposti"@fi ;
+        rdfs:label                "Email"@en , "Sähköposti"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T16:01:21.025+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "email" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:path              schema:email .
+
+<urn:uuid:a1ff7c11-84f2-45a4-991a-9d37be37fac9>
+        rdfs:comment              "The telephone number."@en , "Toimijan puhelinnumero"@fi ;
+        rdfs:label                "Puhelinnumero"@fi , "Phone"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T16:04:44.582+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "telephone" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  3 ;
+        sh:path              schema:telephone .
+
+<http://iow.csc.fi/ns/att#Project>
+        a                   sh:Shape ;
+        rdfs:comment        "A project (a collective endeavour of some kind)."@en , "Aikaan sidottu pidempiaikainen järjestely jonka tavoitteena on tuottaa jotakin"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Projekti"@fi , "Project"@en ;
+        dcterms:created     "2016-10-04T16:08:09"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:3866f9f1-d5b6-4fe1-a58d-de546c2853c3" ;
+        dcterms:modified    "2016-11-28T15:24:21.7+02:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:42c76b1d-e279-47df-9900-6decb504d21e> , <urn:uuid:ed9a0a67-0de8-4138-9845-b3875b627c13> , <urn:uuid:71385bbe-3099-4009-b11e-f58001f7d2fd> , <urn:uuid:71fc1156-701f-44a2-9080-70fe86142e1a> , <urn:uuid:f707c80e-9bf1-4268-ade8-7eee09132f79> , <urn:uuid:355c1602-6796-467e-af93-e02bc527d943> ;
+        sh:targetClass       foaf:Project .
+
+<urn:uuid:42c76b1d-e279-47df-9900-6decb504d21e>
+        rdfs:comment              "Name of the project"@en , "Projektin nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Name"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T16:08:49.687+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "name" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              foaf:name .
+
+<urn:uuid:ed9a0a67-0de8-4138-9845-b3875b627c13>
+        rdfs:comment              "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system.  An unambiguous reference to the resource within a given context."@en , "Projektin tunniste"@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T16:09:12.063+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:71385bbe-3099-4009-b11e-f58001f7d2fd>
+        rdfs:comment              "Rahoittajan antama tunniste"@fi , "Unique identifier for the project that is being used by the project funder"@en ;
+        rdfs:label                "Projektin rahoitustunniste"@fi , "Project funding identifier"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:06:00.71+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "hasFunderIdentifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  2 ;
+        sh:path              <http://purl.org/cerif/frapo/hasFunderIdentifier> .
+
+<urn:uuid:71fc1156-701f-44a2-9080-70fe86142e1a>
+        rdfs:comment              "A homepage for some thing." , "Projektin kotisivu"@fi ;
+        rdfs:label                "Homepage"@en , "Verkko-osoite"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:02:30.487+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "homepage" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:path              foaf:homepage ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Document> .
+
+<urn:uuid:f707c80e-9bf1-4268-ade8-7eee09132f79>
+        rdfs:comment              "Projektin rahoittaja"@fi ;
+        rdfs:label                "Funding agency"@en , "Rahoittaja"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-05-17T14:06:38.605+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "hasFundingAgency" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  4 ;
+        sh:path              <http://purl.org/cerif/frapo/hasFundingAgency> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:355c1602-6796-467e-af93-e02bc527d943>
+        rdfs:comment              "The Organization(s) who is/are participating to the project"@en , "Organisaatiot jotka osallistuvat projektiin"@fi ;
+        rdfs:label                "Organisaatio"@fi , "Organization"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T16:16:01.041+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "sourceOrganization" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  5 ;
+        sh:minCount               1 ;
+        sh:path              schema:sourceOrganization ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .
+
+<urn:uuid:81eebc56-49a6-4404-be8e-c1164b128883>
+        rdfs:comment              "A project that has caused the dataset to be created"@en , "Projekti, joka on teettänyt tai muuten saanut aikaan aineiston tuottamisen"@fi ;
+        rdfs:label                "Producer project"@en , "Tuottajaprojekti"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T16:18:59.628+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "isOutputOf" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  9 ;
+        sh:path              <http://purl.org/cerif/frapo/isOutputOf> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Project> .
+
+<urn:uuid:4ec13b20-6dac-49b7-abe0-a1d336382f1e>
+        rdfs:comment              "A name given to the activity."@en , "Tapahtuman nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Title"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T16:32:15.96+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:title .
+
+<urn:uuid:4e5467b4-5452-4d2b-b1d3-986da374be7f>
+        rdfs:comment              "Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]. A language of the resource."@en , "Kieli, jonka taitamista aineiston ymmärtäminen ja käyttäminen vaatii. Esimerkiksi kieli, jolla haastattelu on kirjoitettu, tai numeerisen aineiston kohdalla kieli, jolla on nimetty aineiston muuttujat tai muuttujien tai arvojen selitteet."@fi ;
+        rdfs:label                "Kieli"@fi , "Language"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-04T16:50:45.167+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "language" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  14 ;
+        sh:path              dcterms:language ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#LinguisticSystem> .
+
+<urn:uuid:c2546089-1a41-406b-9047-51c635e1639b>
+        rdfs:comment              "This property contains a version number or other version designation of the Dataset."@en , "Aineiston versionumero"@fi ;
+        rdfs:label                "Version"@en , "Versionumero"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T08:47:47.164+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "versionInfo" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:path              owl:versionInfo .
+
+<urn:uuid:8de22751-6c15-4f84-b255-8b9fa466e1d3>
+        rdfs:comment              "Type of the entity, for example: API, Application, News article, paper, post or visualization."@en , "Entiteetin tyyppi"@fi ;
+        rdfs:label                "Tyyppi"@fi , "Type"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T09:59:02.932+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "type" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:type ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<http://iow.csc.fi/ns/att#MediaType>
+        a                   sh:Shape ;
+        rdfs:comment        "A file format or physical medium."@en , "Rekisteröity tiedostomuoto"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Media Type"@en , "Mediatyyppi"@fi ;
+        dcterms:created     "2016-10-05T10:16:50"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:7494825a-de35-45af-bdd1-502aa3eb5574" ;
+        dcterms:modified    "2016-10-24T13:23:09.805+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:6407626a-8f90-4d2f-95f2-dcad32f3e3a1> , <urn:uuid:a017cd9f-c5db-4f3c-b0be-94c708878fc5> ;
+        sh:targetClass       dcterms:MediaType .
+
+<urn:uuid:6407626a-8f90-4d2f-95f2-dcad32f3e3a1>
+        rdfs:comment              "Identifier for the Media Type from the IANA Media Type Registry."@en , "Mediatyypin URI tunniste IANA rekisteristä"@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  true ;
+        dcam:memberOf             <https://www.iana.org/assignments/media-types/> ;
+        dcterms:created           "2016-10-05T10:15:21.525+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:pattern                "" ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:a017cd9f-c5db-4f3c-b0be-94c708878fc5>
+        rdfs:comment              "A name of the media type from the IANA Media Type registry"@en , "Mediatyypin nimi IANA rekisteristä"@fi ;
+        rdfs:label                "Nimi"@fi , "Title"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T10:17:12.134+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:title .
+
+<https://www.iana.org/assignments/media-types/>
+        a                    dcam:VocabularyEncodingScheme ;
+        dcterms:description  "IANA Media Type registry"@en ;
+        dcterms:identifier   <urn:uuid:8f3d423d-dc02-47b4-af09-af1ceb096e81> ;
+        dcterms:isPartOf     iow:OtherCodeGroup ;
+        dcterms:title        "IANA Media Types"@en .
+
+<http://publications.europa.eu/mdr/authority/file-type/>
+        a                    dcam:VocabularyEncodingScheme ;
+        dcterms:description  "The File types list"@en ;
+        dcterms:identifier   <urn:uuid:b911127e-db28-4628-9737-194e37318db8> ;
+        dcterms:isPartOf     iow:OtherCodeGroup ;
+        dcterms:title        "MDR File Type Registry"@en .
+
+<http://iow.csc.fi/ns/att#FileFormat>
+        a                   sh:Shape ;
+        rdfs:comment        "A digital resource format."@en , "Digitaalisen resurssin tiedostomuoto"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Tiedostomuoto"@fi , "File Format"@en ;
+        dcterms:created     "2016-10-05T10:23:34"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:5101c505-adf0-4c07-baf0-1856c9f80114" ;
+        dcterms:modified    "2017-02-02T11:14:59.013+02:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:c3c41aa9-e72a-430c-be0a-a38ef70af04b> , <urn:uuid:90eab617-765f-4ab3-ad97-82e382ee638a> , <urn:uuid:a9c5cd2a-c52c-4ae4-9a26-87bdfb958715> , <urn:uuid:59b422c0-9940-4163-9317-322306acc4cc> , <urn:uuid:e5050e2f-4486-4724-98eb-21f117927925> ;
+        sh:targetClass       dcterms:FileFormat .
+
+<urn:uuid:c3c41aa9-e72a-430c-be0a-a38ef70af04b>
+        rdfs:comment              "URI identifier for the file type"@en , "URI tunniste MDR tiedostomuotoluokituksesta"@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  false ;
+        dcam:memberOf             <http://publications.europa.eu/mdr/authority/file-type/> ;
+        dcterms:created           "2016-10-05T10:30:27.297+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:example              "http://publications.europa.eu/resource/authority/file-type/GZIP" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:pattern                "" ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:90eab617-765f-4ab3-ad97-82e382ee638a>
+        rdfs:comment              "A name of the file type"@en , "Tiedostomuodon nimi"@fi ;
+        rdfs:label                "Nimi"@fi , "Title"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T10:25:53.138+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "title" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:title .
+
+<urn:uuid:a9c5cd2a-c52c-4ae4-9a26-87bdfb958715>
+        rdfs:comment              "Cette propriété doit être utilisée quand c'est définit le type de média de la distribution\n\t\t\t\t\ten IANA, sinon dct:format DOIT être utilisé avec différentes valeurs."@fr , "Esta propiedad debe ser usada cuando está definido el tipo de media de la distribución \n\t\t\t\t\ten IANA, de otra manera dct:format puede ser utilizado con diferentes valores"@es , "يجب استخدام هذه الخاصية إذا كان نوع الملف معرف ضمن IANA"@ar , "このプロパティーは、配信のメディア・タイプがIANAで定義されているときに使用すべきで（SHOULD）、そうでない場合には、dct:formatを様々な値と共に使用できます（MAY）。"@ja , "Η ιδιότητα αυτή ΘΑ ΠΡΕΠΕΙ να χρησιμοποιείται όταν ο τύπος μέσου μίας διανομής είναι ορισμένος στο IANA, αλλιώς \n          η ιδιότητα dct:format ΔΥΝΑΤΑΙ να χρησιμοποιηθεί με διαφορετικές τιμές."@el , "Mime type for the file format"@en , "Tiedostomuodon mediatyyppi"@fi ;
+        rdfs:label                "tipo de media"@es , "メディア・タイプ"@ja , "τύπος μέσου"@el , "type de média"@fr , "نوع الميديا"@ar , "Mime type"@en , "Mime tyyppi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T10:27:14.773+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "mediaType" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.w3.org/ns/dcat#mediaType> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#MediaType> .
+
+<urn:uuid:59b422c0-9940-4163-9317-322306acc4cc>
+        rdfs:comment              "Description of the file type"@en , "Tiedostomuodon kuvaus"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T10:29:34.482+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  2 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:2e30b20c-e839-4674-827e-417a3c51f445>
+        rdfs:comment              "This property refers to the file format of the Distribution."@en , "Jakelun tiedostoformaatti"@fi ;
+        rdfs:label                "Format"@en , "Tiedostoformaatti"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T12:38:06.2+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "format" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  8 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:format ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#FileFormat> .
+
+<urn:uuid:57eec2d3-d622-41bb-b0c7-905c6ade66d7>
+        rdfs:comment              "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource. An account of the resource."@en , "Lisenssin lyhyt kuvaus"@fi ;
+        rdfs:label                "Kuvaus"@fi , "Description"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T13:38:59.841+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "description" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               rdf:langString ;
+        sh:index                  2 ;
+        sh:path              dcterms:description .
+
+<urn:uuid:097b8b35-f547-44f5-ab39-810ca61cc20c>
+        rdfs:comment              "A referenced license document that applies to this content"@en , "Viitattu lisenssidokumentti joka määrittelee tarkemman lisenssin kuvauksen"@fi ;
+        rdfs:label                "Licence URL"@en , "Linkki lisenssiin"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T13:40:07.218+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "license" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:path              schema:license .
+
+<urn:uuid:814f02c6-eaff-40e2-9566-962f01632f11>
+        rdfs:comment              "Local identifier type defines use of the identifier in given context."@en , "Paikallinen tunniste joka määrittelee tunnisteen käyttötarkoituksen"@fi ;
+        rdfs:label                "Local identifier type"@en , "Käyttötarkoitus"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-05T13:46:18.753+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "localIdentifierType" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:string ;
+        sh:index                  3 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:identifier .
+
+<http://iow.csc.fi/ns/att#Activity>
+        a                   sh:Shape ;
+        rdfs:comment        "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities."@en , "Tutkimusaineiston tilaan vaikuttanut toiminta, jolla on ajallinen ulottuvuus"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Tapahtuma"@fi , "Activity"@en ;
+        dcterms:created     "2016-05-17T14:32:21"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:81aff04f-2d69-4226-a71c-5a1465738deb" ;
+        dcterms:modified    "2016-10-24T16:55:39.606+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:c64c03cd-29cd-4128-a783-203cccbf0dcb> , <urn:uuid:441f0e70-178b-406c-8f60-759e5ce5ed34> , <urn:uuid:27f7fb07-f542-4d39-bab4-94e7cc464009> , <urn:uuid:9c6ad96a-c719-4680-8a35-868beafb8399> , <urn:uuid:212e7054-1f9d-4922-ac2e-99ad4b77517c> , <urn:uuid:eeba5700-c76f-404f-bbc2-b4a89c812abd> , <urn:uuid:dc1d46a3-2526-42e2-8204-4a49080a82f3> , <urn:uuid:4ec13b20-6dac-49b7-abe0-a1d336382f1e> ;
+        sh:targetClass       prov:Activity .
+
+<http://iow.csc.fi/ns/att#StructuredIdentifier>
+        a                   sh:Shape ;
+        rdfs:comment        "Structured identifier"@en , "Rakenteistettu tunniste joka perustuu johonkin tunnistejärjestelmään"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Structured Identifier"@en , "Rakenteinen tunniste"@fi ;
+        dcterms:created     "2016-05-17T14:26:34"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:43ffcb0a-249c-477a-ad8b-6b7a9a8f0540" ;
+        dcterms:modified    "2016-10-24T12:26:42.496+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        skos:editorialNote  ""@en , "Tähän tarvitaan luokitus esim DataCite määrittelee:\n\ndatacite:ark\ndatacite:doi\ndatacite:ean13\ndatacite:eissn\ndatacite:handle\ndatacite:infouri\ndatacite:isbn\ndatacite:issn\ndatacite:istc\ndatacite:lissn\ndatacite:lsid\ndatacite:nihmsid\ndatacite:pmcid\ndatacite:pmid\ndatacite:purl\ndatacite:sici\ndatacite:upc\ndatacite:uri\ndatacite:url\ndatacite:urn"@fi ;
+        sh:property         <urn:uuid:cbd34cb9-e76c-4d20-a10f-8f2568930857> , <urn:uuid:56160468-eda9-4023-ba85-bce6507d76ea> , <urn:uuid:1404ea4b-6ca4-47f8-92fa-47fe2edd8d00> , <urn:uuid:814f02c6-eaff-40e2-9566-962f01632f11> ;
+        sh:targetClass       adms:Identifier .
+
+<http://iow.csc.fi/ns/att#Distribution>
+        a                   sh:Shape ;
+        rdfs:comment        "A physical embodiment of the Research dataset in a particular format"@en , "Konkreettinen tallennus- tai esitysmuoto aineiston tiedoille, esimerkiksi tiedostot, tietokantarepresentaatiot tai kyselyrajapinnat."@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Distribution"@en , "Distribution"@fr , "配信"@ja , "التوزيع"@ar , "Distribución"@es , "Διανομή"@el , "Jakelu"@fi ;
+        dcterms:created     "2016-05-17T13:22:48"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:62b8dd3b-ca75-4ad7-acb5-4b8d1269d3f0" ;
+        dcterms:modified    "2017-02-02T11:16:29.935+02:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:c866e1dc-fd01-40dd-b883-85c3e053bcc8> , <urn:uuid:906038dc-48af-46cf-9b56-3188b838d161> , <urn:uuid:d4929fd6-0d16-4da4-8c21-330a926b1d17> , <urn:uuid:b40f2612-b11b-4bff-b876-405f8e75ee2e> , <urn:uuid:2df09a34-d62c-41f0-b764-74f88af78e84> , <urn:uuid:a54407b3-352b-4c01-875b-1bb3688f2f22> , <urn:uuid:84c92d7d-393f-4a71-a735-da9c36462597> , <urn:uuid:a532d3f5-05a1-41de-9e74-440618369fd7> , <urn:uuid:f0809fee-9eba-4a8f-9b6e-613cd346f239> , <urn:uuid:2e30b20c-e839-4674-827e-417a3c51f445> , <urn:uuid:c05f0375-286b-4624-b119-cb3d184966b6> ;
+        sh:targetClass       <http://www.w3.org/ns/dcat#Distribution> .
+
+<http://iow.csc.fi/ns/att#RightsStatement>
+        a                   sh:Shape ;
+        rdfs:comment        "A statement about the intellectual property rights (IPR) held in or over a resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en , "Aineettoman omaisuuden oikeuksia (immateriaalioikeudet) määrittelevä kuvaus"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Rights Statement"@en , "Oikeuksien kuvaus"@fi ;
+        dcterms:created     "2016-05-17T14:16:44"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:24ee1e96-2c5f-4f2d-ab73-f5d222712c51" ;
+        dcterms:modified    "2016-12-09T15:07:29.595+02:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:79f5fe95-5a30-44c2-9860-3303b9605ce4> , <urn:uuid:3344c79f-782e-407c-9bc1-563032852345> , <urn:uuid:0b8f9320-ac2f-4198-8f47-a3c46d8d5996> , <urn:uuid:d6663041-1102-4e2d-8e9c-2416704fb2ba> , <urn:uuid:145fb47f-7446-4172-a2ca-947577dac6ae> ;
+        sh:targetClass       dcterms:RightsStatement .
+
+<http://iow.csc.fi/ns/att#Variable>
+        a                   sh:Shape ;
+        rdfs:comment        "Study-independent variable"@en , "Tutkimusaineistosta riippumaton uudelleenkäytettävä muuttuja"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "Variable"@en , "Muuttuja"@fi ;
+        dcterms:created     "2016-05-17T13:17:51"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:afb931cb-8c36-4cff-a92e-334f3d82b4bb" ;
+        dcterms:modified    "2016-10-24T11:53:24.204+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:43ef0476-d7ff-463e-b0bc-2199cc19dc62> , <urn:uuid:89e4ab34-2b70-4162-8b45-1305aeaeac81> , <urn:uuid:230819de-10fe-44e1-9221-564b2fe19b5e> , <urn:uuid:d2ce047c-5664-4aad-b81a-523eafd31c06> , <urn:uuid:d18384d7-77dd-4fd4-95d9-cd164c7f6d1e> ;
+        sh:targetClass       <http://rdf-vocabulary.ddialliance.org/discovery#RepresentedVariable> .
+
+<http://iow.csc.fi/ns/att#CatalogRecord>
+        a                   sh:Shape ;
+        rdfs:comment        "A description of a Dataset’s entry in the Catalogue"@en , "Joukko metatietoja, jotka kuvailevat tutkimusaineiston metatietoihin tehtyjä muutoksia"@fi ;
+        rdfs:isDefinedBy    <http://iow.csc.fi/ns/att> ;
+        rdfs:label          "カタログ・レコード"@ja , "سجل"@ar , "Registre du catalogue"@fr , "Catalog Record"@en , "Registro de catálogo"@es , "Καταγραφή καταλόγου"@el , "Katalogitietue"@fi ;
+        dcterms:created     "2016-05-17T10:27:42"^^xsd:dateTime ;
+        dcterms:identifier  "urn:uuid:b4a5ec88-959e-4974-8540-6ca22eebd078" ;
+        dcterms:modified    "2016-10-24T11:13:25.859+03:00"^^xsd:dateTime ;
+        owl:versionInfo     "Unstable" ;
+        sh:property         <urn:uuid:0cecfbbe-d36e-4cf2-acd9-16425886b166> , <urn:uuid:d2c289ed-eca9-427f-94cf-7ca649d86e34> , <urn:uuid:7036489b-4bce-47b1-903c-98b401fd4594> , <urn:uuid:f4fecfb5-c2aa-47b3-9fb2-a6d828f605e6> ;
+        sh:targetClass       <http://www.w3.org/ns/dcat#CatalogRecord> .
+
+<urn:uuid:8f509c52-b721-4f2f-b0dc-69c696721040>
+        rdfs:comment              "URI of the Concept Scheme"@en , "Käsitejärjestelmän yksilöivä URN tai URI tunniste"@fi ;
+        rdfs:label                "Tunniste"@fi , "Identifier"@en ;
+        iow:isResourceIdentifier  true ;
+        dcterms:created           "2016-10-11T13:00:33.406+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "identifier" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:datatype               xsd:anyURI ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              dcterms:identifier .
+
+<urn:uuid:c05f0375-286b-4624-b119-cb3d184966b6>
+        rdfs:comment              "Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.\n\nThe nature or genre of the resource."@en , "Jakelun tyyppi"@fi ;
+        rdfs:label                "Type"@en , "Tiedostotyyppi"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-25T15:33:28.478+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "type" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:editorialNote        "Tähän tulee tiedostotyyppiluokitus (Datatiedosto, Dokumentaatio, Metodi etc. yms.)"@fi ;
+        sh:index                  10 ;
+        sh:maxCount               1 ;
+        sh:path              dcterms:type ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#Concept> .
+
+<urn:uuid:805fa167-bda2-4c79-a9eb-13d83d0414c6>
+        a                skos:Concept , iow:ConceptSuggestion ;
+        skos:definition  "Filetype specific external metadata that can be generated from the file"@fi ;
+        skos:inScheme    <http://iow.csc.fi/ns/att/skos#> ;
+        skos:prefLabel   "External metadata"@fi .
+
+<urn:uuid:81dfdcbd-8c89-4ea1-b807-9163ca7e9e8e>
+        rdfs:comment              "Used text encoding"@en , "Tekstin enkoodauksessa käytetty merkistö"@fi ;
+        rdfs:label                "Text encoding"@en , "Tekstin enkoodaus"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-25T16:20:10.923+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "encoding" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:editorialNote        "Käytetty luokitus: https://www.w3.org/TR/encoding/"@fi ;
+        sh:datatype               xsd:string ;
+        sh:index                  0 ;
+        sh:maxCount               1 ;
+        sh:path              schema:encoding .
+
+<urn:uuid:337f9a26-27b5-4093-9d06-cd8207ba4961>
+        rdfs:comment              "A designation for the name of the software program that created the object"@en , "Sovelluksen nimi jolla tiedosto on luotu"@fi ;
+        rdfs:label                "Luotu sovelluksella"@fi , "Application name"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-25T16:39:10.2+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "hasCreatingApplicationName" ;
+        dcterms:type              owl:DatatypeProperty ;
+        owl:versionInfo           "Unstable" ;
+        skos:example              "MSWord" ;
+        sh:datatype               xsd:string ;
+        sh:index                  1 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.loc.gov/premis/rdf/v1#hasCreatingApplicationName> .
+
+<http://iow.csc.fi/ns/att#DistributionCharacteristics>
+        a                    rdfs:Class ;
+        rdfs:comment         "Tiedostomuotokohtainen metatieto joka voidaan erikseen generoida tiedoston sisällöstä"@fi , "Technical properties of a distribution that are applicable to most of distributions"@en ;
+        rdfs:isDefinedBy     <http://iow.csc.fi/ns/att> ;
+        rdfs:label           "Tiedostomuotokohtaiset tiedot"@fi , "Distribution characteristics"@en ;
+        dcterms:created      "2016-10-25T16:10:01"^^xsd:dateTime ;
+        dcterms:identifier   "urn:uuid:ee03a27b-5b18-4353-a290-4ddedeaadd4c" ;
+        dcterms:modified     "2016-10-25T16:47:06.317+03:00"^^xsd:dateTime ;
+        dcterms:subject      <urn:uuid:805fa167-bda2-4c79-a9eb-13d83d0414c6> ;
+        owl:equivalentClass  <http://www.loc.gov/premis/rdf/v1#ObjectCharasteristics> ;
+        owl:versionInfo      "Unstable" ;
+        sh:property          <urn:uuid:81dfdcbd-8c89-4ea1-b807-9163ca7e9e8e> , <urn:uuid:337f9a26-27b5-4093-9d06-cd8207ba4961> .
+
+<urn:uuid:e5050e2f-4486-4724-98eb-21f117927925>
+        rdfs:comment              "Tiedostomuotokohtaiset tiedot"@fi , "Fileformat specific charasteristics"@en ;
+        rdfs:label                "Tiedostomuotokohtaiset tiedot"@fi , "Distrubution charasteristics"@en ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2016-10-25T16:41:16.452+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "hasObjectCharacteristics" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  4 ;
+        sh:maxCount               1 ;
+        sh:path              <http://www.loc.gov/premis/rdf/v1#hasObjectCharacteristics> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#DistributionCharacteristics> .
+
+<urn:uuid:d2931bcb-01ff-40cf-9dc8-ae3f20d2ba2d>
+        rdfs:comment              "データセットを、VCardを用いて提供されている適切な連絡先情報にリンクします。"@ja , "Links a dataset to relevant contact information which is provided using VCard."@en , "Enlaza un conjunto de datos a información de contacto relevante utilizando VCard"@es , "Συνδέει ένα σύνολο δεδομένων με ένα σχετικό σημείο επικοινωνίας, μέσω VCard."@el , "تربط قائمة البيانات بعنوان اتصال موصف  باستخدام VCard"@ar , "Relie un jeu de données à une information de contact utile en utilisant VCard."@fr , "Aineistokuraattorin yhteystiedot"@fi ;
+        rdfs:label                "σημείο επικοινωνίας"@el , "contact point"@en , "point de contact"@fr , "窓口"@ja , "punto de contacto"@es , "عنوان اتصال"@ar , "Aineistokuraattorin yhteystiedot"@fi ;
+        iow:isResourceIdentifier  false ;
+        dcterms:created           "2017-06-20T13:43:08.683+03:00"^^xsd:dateTime ;
+        dcterms:identifier        "contactPoint" ;
+        dcterms:type              owl:ObjectProperty ;
+        owl:versionInfo           "Unstable" ;
+        sh:index                  25 ;
+        sh:maxCount               1 ;
+        sh:minCount               1 ;
+        sh:path              <http://www.w3.org/ns/dcat#contactPoint> ;
+        sh:valueShape             <http://iow.csc.fi/ns/att#ResearchAgent> .

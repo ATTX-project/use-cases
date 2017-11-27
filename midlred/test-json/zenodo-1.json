@@ -1,0 +1,98 @@
+    {
+      "@id": "zenodo:985385",
+      "@type": "work:Dataset",
+      "contributors": [
+        {
+          "@id": "contributor:Gurtovenko%2C%20Andrey%20A.-Researcher",
+          "@type": "work:Contributor",
+          "affiliation": null,
+          "contributorName": "Lastname, Firstname",
+          "contributorType": "Researcher",
+          "nameIdentifiers": {
+            "@id": "orcid:2",
+            "@type": "work:Person",
+            "identifierType": "orcid",
+            "idenfifierValue": "2"
+          }
+        },
+        {
+          "@id": "contributor:Miettinen%2C%20Markus%20S.-Researcher",
+          "@type": "work:Contributor",
+          "affiliation": null,
+          "contributorName": "Lastname, Firstname",
+          "contributorType": "Researcher",
+          "nameIdentifiers": null
+        }
+      ],
+      "creators": [
+        {
+          "@id": "affiliated-creator:Stenroos%2C%20SoiliLUOMUS%20-%20Finnish%20Museum%20of%20Natural%20History%2C%20University%20of%20Helsinki%2C%20Helsinki%2C%20Finland",
+          "@type": "work:Creator",
+          "affiliation": "LUOMUS - Finnish Museum of Natural History, University of Helsinki, Helsinki, Finland",
+          "creatorName": "Lastname, Firstname",
+          "nameIdentifiers": null
+        },
+        {
+          "@id": "affiliated-creator:Spirin%2C%20ViacheslavLUOMUS%20-%20Finnish%20Museum%20of%20Natural%20History%2C%20University%20of%20Helsinki%2C%20Helsinki%2C%20Finland",
+          "@type": "work:Creator",
+          "affiliation": "LUOMUS - Finnish Museum of Natural History, University of Helsinki, Helsinki, Finland",
+          "creatorName": "Lastname, Firstname",
+          "nameIdentifiers": null
+        },
+        {
+          "@id": "affiliated-creator:Hibbett%2C%20DavidClark%20University%2C%20Worcester%2C%20United%20States%20of%20America",
+          "@type": "work:Creator",
+          "affiliation": "Clark University, Worcester, United States of America",
+          "creatorName": "Lastname, Firstname",
+          "nameIdentifiers": {
+            "@id": "orcid:1",
+            "@type": "work:Person",
+            "identifierType": "orcid",
+            "idenfifierValue": "1"
+          }
+        },
+        {
+          "@id": "affiliated-creator:Miettinen%2C%20OttoLUOMUS%20-%20Finnish%20Museum%20of%20Natural%20History%2C%20University%20of%20Helsinki%2C%20Helsinki%2C%20Finland",
+          "@type": "work:Creator",
+          "affiliation": "LUOMUS - Finnish Museum of Natural History, University of Helsinki, Helsinki, Finland",
+          "creatorName": "Lastname, Firstname",
+          "nameIdentifiers": null
+        },
+        {
+          "@id": "affiliated-creator:Vlas%C3%A1k%2C%20JosefBiology%20Centre%20of%20the%20Czech%20Academy%20of%20Sciences%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice%2C%20Czech%20Republic",
+          "@type": "work:Creator",
+          "affiliation": "Biology Centre of the Czech Academy of Sciences, České Budějovice, Czech Republic",
+          "creatorName": "Lastname, Firstname",
+          "nameIdentifiers": null
+        },
+        {
+          "@id": "affiliated-creator:Rivoire%2C%20BernardSoci%C3%A9t%C3%A9%20Linn%C3%A9enne%2C%20Lyon%2C%20France",
+          "@type": "work:Creator",
+          "affiliation": "Société Linnéenne, Lyon, France",
+          "creatorName": "Lastname, Firstname",
+          "nameIdentifiers": null
+        }
+      ],
+      "identifier": {
+        "@id": "doi:10.3897%2Fmycokeys.17.10153.figure2a",
+        "@type": "work:ID",
+        "identifierType": "doi",
+        "idenfifierValue": "10.3897/mycokeys.17.10153.figure2a"
+      },
+      "language": null,
+      "rightsList": {
+        "@id": "license:CC-BY-4.0",
+        "@type": "work:License",
+        "rights": "CC-BY-4.0"
+      },
+      "publicationYear": "2016-12-08",
+      "publisher": null,
+      "resourceType": {
+        "@id": "resource-type:image",
+        "@type": "work:ResourceType",
+        "title": "Figure"
+      },
+      "subjects": null,
+      "title": "Figure 2a from: Lastname, Firstname (2016) Polypores and genus concepts in Phanerochaetaceae (Polyporales, Basidiomycota). MycoKeys 17: 1-46. https://doi.org/10.3897/mycokeys.17.10153",
+      "version": "4.0"
+    }

@@ -1,0 +1,49 @@
+    {
+      "@id": "etsin:urn-nbn-fi-csc-kata20170309222112774584",
+      "@type": "work:Dataset",
+      "contributors": null,
+      "creators": [
+        {
+          "@id": "etsin-creator:urn-nbn-fi-csc-kata20170309222112774584-The%20Research%20Unit%20for%20Variation%2C%20Contacts%20and%20Change%20in%20English",
+          "@type": "work:Creator",
+          "affiliation": null,
+          "creatorName": "The Research Unit for Variation, Contacts and Change in English",
+          "nameIdentifiers": null
+        },
+        {
+          "@id": "etsin-creator:urn-nbn-fi-csc-kata20170309222112774584-Semanttisen%20laskennan%20tutkimusryhm%C3%A4%20(SeCo)",
+          "@type": "work:Creator",
+          "affiliation": null,
+          "creatorName": "Semanttisen laskennan tutkimusryhmä (SeCo)",
+          "nameIdentifiers": null
+        }
+      ],
+      "identifier": {
+        "@id": "http://ldf.fi/ceecs",
+        "@type": "work:ID",
+        "identifierType": "urn",
+        "idenfifierValue": "http://ldf.fi/ceecs"
+      },
+      "language": [
+        "fin",
+        "eng"
+      ],
+      "rightsList": {
+        "@id": "license:CC0-1.0",
+        "@type": "work:License",
+        "rights": "CC0-1.0"
+      },
+      "publicationYear": "2017-03-09T20:21:12.889964",
+      "publisher": null,
+      "resourceType": {
+        "@id": "resource-type:dataset",
+        "@type": "work:ResourceType",
+        "title": "dataset"
+      },
+      "subjects": null,
+      "title": {
+        "@language": "eng",
+        "@value": "CEEC Sampler"
+      },
+      "version": "4.0"
+    }

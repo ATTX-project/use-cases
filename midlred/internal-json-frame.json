@@ -1,0 +1,85 @@
+{
+  "@context": {
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "ex": "http://example.org/vocab#",
+    "work": "http://data.hulib.helsinki.fi/attx/work#",
+    "version": "work:version",
+    "identifier": "work:identifier",
+    "idenfifierValue": "work:value",
+    "identifierType": "work:type",
+    "title": "work:title",
+    "subjects": "work:subject",
+    "subject": "work:term",
+    "creators": "work:creator",
+    "creatorName": "work:creatorName",
+    "contributors": "work:contributor",
+	"contributorName": "work:contributorName",
+    "contributorType": "work:contributorType",
+
+    "affiliation" : "work:affiliation",
+    "publisher": "work:publisher",
+    "publicationYear": "work:pubdate",
+    "language": "work:language",
+    "resourceType": "work:resourceType",
+    "resourceTypeGeneral": "work:title",
+	"nameIdentifiers": "work:nameIdentifier",
+    "subjectScheme": "work:subjectScheme",
+    "valueURI": "work:valueURI",
+    "rightsList": "work:license",
+    "rights": "work:licenseID"
+
+  },
+  "@type": "work:Dataset",
+  "@explicit": true,
+  "@requireAll": false,
+  "identifier": {
+    "@type": "work:ID",
+  	"@explicit": true,
+    "idenfifierValue": "",
+    "identifierType": ""
+  },
+  "title": "",
+  "subjects": {
+    "subject": "",
+    "subjectScheme": "",
+    "valueURI": ""
+  },
+  "creators": {
+    "@explicit": true,
+    "@requireAll": false,
+    "creatorName": "",
+    "affiliation": "",
+    "nameIdentifiers": {
+
+      "@explicit": true,
+      "idenfifierValue": "",
+      "identifierType": ""
+    }
+  },
+  "contributors": {
+    "@explicit": true,
+    "@requireAll": false,
+    "contributorName": "",
+    "contributorType": "",
+    "affiliation": "",
+    "nameIdentifiers": {
+
+      "@explicit": true,
+      "idenfifierValue": "",
+      "identifierType": ""
+    }
+  },
+  "publisher": "",
+  "publicationYear": "",
+  "language": "",
+  "resourceType": {
+    "@explicit": true,
+    "resourceTypeGeneral": ""
+  },
+  "rightsList": {
+    "@explicit": true,
+    "rights" : "",
+    "rightURI": ""
+  },
+  "version": {"@default": "4.0"}
+}

@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "ex": "http://example.org/vocab#",
+    "dct": "http://purl.org/dc/terms/",
+    "work": "http://data.hulib.helsinki.fi/attx/work#",
+    "title": "dct:title"
+
+  },
+  "@type": "work:Publication",
+  "@explicit": true,
+  "@requireAll": false,
+  "title": "",
+  "version": {"@default": "4.0"}
+}

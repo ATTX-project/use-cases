@@ -1,0 +1,45 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix ex: <http://example.com/ns#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix attx: <http://data.hulib.helsinki.fi/attx/> .
+@prefix attx-work: <http://data.hulib.helsinki.fi/attx/work#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+<#jyu-tutka-publications>
+
+    rml:logicalSource [
+	     rml:source "{filename}";
+        rml:referenceFormulation ql:CSV
+    ];
+
+    rr:subjectMap [
+        rr:template "tutka:{TUTKAID}" ;
+        rr:class attx-work:Publication
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate dct:title;
+        rr:objectMap [
+          rml:reference "TITLE"
+        ]
+      ];
+
+    rr:predicateObjectMap [
+        rr:predicate dct:issued;
+        rr:objectMap [
+          rml:reference "YEAR" ;
+          rr:datatype xsd:integer ;
+        ]
+      ];
+
+    rr:predicateObjectMap [
+        rr:predicate attx-work:hasVersion;
+        rr:objectMap [
+          rr:template "parallelpub:{DOI}" ;
+
+        ]
+      ];
+.

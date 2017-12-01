@@ -1,0 +1,271 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix ex: <http://example.com/ns#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix attx: <http://data.hulib.helsinki.fi/attx/> .
+@prefix attx-work: <http://data.hulib.helsinki.fi/attx/work#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix etsin: <http://etsin.avointiede.fi/> .
+@prefix etsin-ds: <http://etsin.avointiede.fi/dataset/> .
+@prefix oai: <http://www.openarchives.org/OAI/2.0/> .
+
+<etsin:primary-identifiers>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*].pids[?(@.type=='primary')]"
+  ];
+
+  rr:subjectMap [
+    rml:reference "id" ;
+    rr:class attx-work:ID ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:value;
+      rr:objectMap [
+        rml:reference "id" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:type;
+      rr:objectMap [
+        rr:constant "urn"
+      ]
+    ];
+.
+
+<etsin:creators>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[?(@.type=='dataset')].agent[?(@.role=='author')]"
+
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-creator:{parentID}-{name}" ;
+    rr:class attx-work:Creator ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:creatorName;
+      rr:objectMap [
+        rml:reference "name"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:nameIdentifier;
+      rr:objectMap [
+        rr:template "orcid:{id}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:affiliation;
+      rr:objectMap [
+        rml:reference "organization" ;
+      ]
+    ];
+
+.
+
+<etsin:contributors>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[?(@.type=='dataset')].agent[?(@.role=='contributor')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin-contributor:{name}" ;
+    rr:class attx-work:Contributor ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:contributorName;
+      rr:objectMap [
+        rml:reference "name"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:nameIdentifier;
+      rr:objectMap [
+        rr:template "orcid:{id}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:affiliation;
+      rr:objectMap [
+        rml:reference "organization" ;
+      ]
+    ];
+.
+
+<etsin:licenses>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*]"
+  ];
+  rr:subjectMap [
+    rr:template "license:{license_id}" ;
+    rr:class attx-work:License ;
+  ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:licenseID;
+      rr:objectMap [
+        rml:reference "license_id" ;
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:licenseName;
+      rr:objectMap [
+        rml:reference "license_title" ;
+      ]
+    ];
+.
+
+<etsin:resource-types>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[*]"
+  ];
+  rr:subjectMap [
+    rr:template "resource-type:{type}" ;
+    rr:class attx-work:ResourceType ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:type;
+      rr:objectMap [
+        rml:reference "type" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:title;
+      rr:objectMap [
+        rml:reference "type" ;
+        rr:termType rr:Literal
+      ]
+    ];
+
+.
+
+<etsin:datasets>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.result[?(@.type=='dataset')]"
+  ];
+
+  rr:subjectMap [
+    rr:template "etsin:{name}" ;
+    rr:class attx-work:Dataset ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:identifier;
+      rr:objectMap [
+        rml:reference "pids[?(@.type=='primary')].id" ;
+        rr:termType rr:IRI;
+        #rr:parentTriplesMap <etsin:primary-identifiers> ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:title;
+      rr:objectMap [
+        rml:reference "title.fin" ;
+        rr:language "fin"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:title;
+      rr:objectMap [
+        rml:reference "title.eng" ;
+        rr:language "eng"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:creator;
+      rr:objectMap [
+        rr:parentTriplesMap <etsin:creators> ;
+        rr:termType rr:IRI
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:contributor;
+      rr:objectMap [
+        rr:parentTriplesMap <etsin:contributors> ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:subject;
+      rr:objectMap [
+        rml:reference "tags[?(@.name=~/http.*/i)].name" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:license;
+      rr:objectMap [
+        rr:template "license:{license_id}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:resourceType;
+      rr:objectMap [
+        rr:template "resource-type:{type}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:language;
+      rr:objectMap [
+          rml:reference "language" ;
+      ]
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:pubdate;
+      rr:objectMap [
+        rml:reference "metadata_created"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:description;
+      rr:objectMap [
+        rml:reference "notes.eng" ;
+        rr:language "eng"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:description;
+      rr:objectMap [
+        rml:reference "notes.fin" ;
+        rr:language "fin"
+      ]
+    ];
+
+.

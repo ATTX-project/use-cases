@@ -1,0 +1,82 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix ex: <http://example.com/ns#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix attx: <http://data.hulib.helsinki.fi/attx/> .
+@prefix attx-work: <http://data.hulib.helsinki.fi/attx/work#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix etsin: <http://etsin.avointiede.fi/> .
+@prefix etsin-ds: <http://etsin.avointiede.fi/dataset/> .
+@prefix oai: <http://www.openarchives.org/OAI/2.0/> .
+
+<jyx:externalpubsdoi>
+  rml:logicalSource [
+    rml:source "rmlservice_1510322235140"  ;
+    rml:referenceFormulation ql:XPath ;
+    rml:iterator "/*[local-name()='OAI-PMH']/*[local-name()='ListRecords']/*[local-name()='record']"
+  ];
+
+  rr:subjectMap [
+    rr:template "externalpub:{*[local-name()='metadata']/*[local-name()='mets']/*[local-name()='dmdSec']/*[local-name()='mdWrap']/*[local-name()='xmlData']/*[local-name()='identifier' and @type='doi']}" ;
+    rr:class attx-work:ExternalPub ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:hasFile ;
+      rr:objectMap [
+        rr:parentTriplesMap <jyx:files>;
+
+      ]
+    ];
+.
+
+<jyx:parallelpubs>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:XPath ;
+    rml:iterator "/*[local-name()='OAI-PMH']/*[local-name()='ListRecords']/*[local-name()='record']"
+  ];
+
+  rr:subjectMap [
+    rr:template "parallelpub:{*[local-name()='metadata']/*[local-name()='mets']/@OBJID}" ;
+    rr:class attx-work:ExternalPub ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:hasFile ;
+      rr:objectMap [
+        rr:parentTriplesMap <jyx:files>;
+
+      ]
+    ];
+.
+
+<jyx:files>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:XPath ;
+    rml:iterator "/*[local-name()='OAI-PMH']/*[local-name()='ListRecords']/*[local-name()='record']"
+  ];
+
+  rr:subjectMap [
+    rr:template "file:{*[local-name()='metadata']/*[local-name()='mets']/@OBJID}" ;
+    rr:class attx-work:File ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:parallelPublicationType;
+      rr:objectMap [
+        rml:reference "*[local-name()='metadata']/*[local-name()='mets']/*[local-name()='dmdSec']/*[local-name()='mdWrap']/*[local-name()='xmlData']/*[local-name()='extension' and not(./*)]"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:downloadLink;
+      rr:objectMap [
+        rml:reference "*[local-name()='metadata']/*[local-name()='mets']/*[local-name()='fileSec']/*[local-name()='fileGrp' and @USE='ORIGINAL']/*[local-name()='file']/@OWNERID" ;
+        rr:termType rr:IRI ;
+      ]
+    ];
+.

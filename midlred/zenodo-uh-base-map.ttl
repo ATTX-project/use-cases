@@ -1,0 +1,493 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix ex: <http://example.com/ns#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix attx: <http://data.hulib.helsinki.fi/attx/> .
+@prefix attx-work: <http://data.hulib.helsinki.fi/attx/work#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix etsin: <http://etsin.avointiede.fi/> .
+
+
+<zenode:doi-identifiers>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].doi"
+  ];
+
+  rr:subjectMap [
+    rr:template "doi:{@}" ;
+    rr:class attx-work:ID ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:value;
+      rr:objectMap [
+        rml:reference "@" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:type;
+      rr:objectMap [
+        rr:constant "doi"
+      ]
+    ];
+.
+
+<zenodo:related>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.related_identifiers[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "{scheme}:{identifier}" ;
+    rr:class attx-work:ID ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:value;
+      rr:objectMap [
+        rml:reference "identifier" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:scheme;
+      rr:objectMap [
+        rml:reference "scheme"
+      ]
+    ];
+
+.
+
+
+<zenode:orcidcontributors>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.contributors[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "orcid:{orcid}" ;
+    rr:class attx-work:Person ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:type;
+      rr:objectMap [
+        rr:constant "orcid"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:value;
+      rr:objectMap [
+        rml:reference "orcid" ;
+      ]
+    ];
+.
+
+<zenode:gndcontributors>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.contributors[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "gnd:{gnd}" ;
+    rr:class attx-work:Person ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:type;
+      rr:objectMap [
+        rr:constant "gnd"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:value;
+      rr:objectMap [
+        rml:reference "gnd" ;
+      ]
+    ];
+.
+
+<zenode:orcidcreators>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.creators[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "orcid:{orcid}" ;
+    rr:class attx-work:Person ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:type;
+      rr:objectMap [
+        rr:constant "orcid"
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:value;
+      rr:objectMap [
+        rml:reference "orcid" ;
+      ]
+    ];
+
+.
+
+<zenode:gndcreators>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.creators[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "gnd:{gnd}" ;
+    rr:class attx-work:Person ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:type;
+      rr:objectMap [
+        rr:constant "gnd"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:value;
+      rr:objectMap [
+        rml:reference "gnd" ;
+      ]
+    ];
+.
+<zenodo:creators>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.creators[*]"
+  ];
+
+  rr:subjectMap [
+    rr:class attx-work:Creator ;
+    rr:template "affiliated-creator:{name}{affiliation}" ;
+
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:creatorName;
+      rr:objectMap [
+        rml:reference "name" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:affiliation;
+      rr:objectMap [
+        rml:reference "affiliation" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:nameIdentifier;
+      rr:objectMap [
+        rr:template "orcid:{orcid}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:nameIdentifier;
+      rr:objectMap [
+        rr:template "gnd:{gnd}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+.
+
+<zenodo:contributors>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.contributors[*]"
+  ];
+  rr:subjectMap [
+    rr:template "contributor:{name}-{type}" ;
+    rr:class attx-work:Contributor ;
+
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:contributorName;
+      rr:objectMap [
+        rml:reference "name" ;
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:contributorType;
+      rr:objectMap [
+        rml:reference "type" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:nameIdentifier;
+      rr:objectMap [
+        rr:template "orcid:{orcid}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:nameIdentifier;
+      rr:objectMap [
+        rr:template "gnd:{gnd}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+.
+
+<zenodo:subjects>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.subjects[*]"
+  ];
+  rr:subjectMap [
+    rml:reference "identifier" ;
+    rr:class attx-work:Subject ;
+  ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:term;
+      rr:objectMap [
+        rml:reference "term" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:valueURI;
+      rr:objectMap [
+        rml:reference "identifier" ;
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:subjectScheme;
+      rr:objectMap [
+        rml:reference "scheme" ;
+      ]
+    ];
+.
+
+<zenodo:licenses>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*]"
+  ];
+  rr:subjectMap [
+    rr:template "license:{metadata.license.id}" ;
+    rr:class attx-work:License ;
+  ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:licenseID;
+      rr:objectMap [
+        rml:reference "metadata.license.id" ;
+      ]
+    ];
+.
+
+<zenodo:resource-types>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*].metadata.resource_type"
+  ];
+  rr:subjectMap [
+    rr:template "resource-type:{type}" ;
+    rr:class attx-work:ResourceType ;
+  ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:type;
+      rr:objectMap [
+        rml:reference "type" ;
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:title;
+      rr:objectMap [
+        rml:reference "title" ;
+      ]
+    ];
+.
+
+
+<zenodo:datasets>
+  rml:logicalSource [
+    rml:source "{filename}"  ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.hits.hits[*]"
+  ];
+
+  rr:subjectMap [
+    rr:template "zenodo:{id}" ;
+    rr:class attx-work:Dataset ;
+  ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:internal-identifier;
+      rr:objectMap [
+        rml:reference "id" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:identifier;
+      rr:objectMap [
+        rr:template "doi:{doi}" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:doi;
+      rr:objectMap [
+        rml:reference "doi" ;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:creator;
+      rr:objectMap [
+        rr:parentTriplesMap <zenodo:creators>
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:title;
+      rr:objectMap [
+        rml:reference "metadata.title"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:description;
+      rr:objectMap [
+        rml:reference "metadata.description"
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:publisher;
+      rr:objectMap [
+        rml:reference "metadata.publisher"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:pubdate;
+      rr:objectMap [
+        rml:reference "metadata.publication_date"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:language;
+      rr:objectMap [
+        rml:reference "metadata.language"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:resourceType;
+      rr:objectMap [
+        rr:template "resource-type:{metadata.resource_type.type}"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:subject;
+      rr:objectMap [
+        rml:reference "metadata.subjects[*].identifier" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:keyword;
+      rr:objectMap [
+        rml:reference "metadata.keywords" ;
+        rr:termType rr:Literal;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:license;
+      rr:objectMap [
+        rr:template "license:{metadata.license.id}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:isSupplementTo;
+      rr:objectMap [
+        rr:template "doi:{metadata.related_identifiers[?(@.relation=='isSupplementTo'][@.scheme=='doi')].identifier}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:isPartOf;
+      rr:objectMap [
+        rr:template "doi:{metadata.related_identifiers[?(@.relation=='isPartOf')][?(@.scheme=='doi')].identifier}" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:isPartOf;
+      rr:objectMap [
+        rml:reference "metadata.related_identifiers[?(@.relation=='isPartOf')][?(@.scheme=='urn')].identifier" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+  rr:predicateObjectMap [
+      rr:predicate attx-work:isPartOf;
+      rr:objectMap [
+        rml:reference "metadata.related_identifiers[?(@.relation=='isPartOf')][?(@.scheme=='url')].identifier" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:isPartOf;
+      rr:objectMap [
+        rml:reference "metadata.related_identifiers[?(@.relation=='isPartOf')][?(@.scheme=='lsid')].identifier" ;
+        rr:termType rr:IRI;
+      ]
+    ];
+
+#  rr:predicateObjectMap [
+#      rr:predicate attx-work:related;
+#      rr:objectMap [
+#        rr:parentTriplesMap <zenodo:related> ;
+#      ]
+#    ];
+
+  rr:predicateObjectMap [
+      rr:predicate attx-work:contributor;
+      rr:objectMap [
+        rr:parentTriplesMap <zenodo:contributors> ;
+      ]
+    ];
+
+
+.

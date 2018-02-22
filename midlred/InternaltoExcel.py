@@ -25,8 +25,14 @@ def getValues(subject, predicate):
 
     return value
 # Load ATT SHACL description
+
+#input_file = "zenodo-uh-base-output.ttl"
+#output_file = 'zenodo-output.xlsx'
+input_file = 'b2share-base-output.ttl'
+output_file = 'b2share-output.xlsx'
+
 data=Graph()
-data.parse("zenodo-uh-base-output.ttl", format="turtle")
+data.parse(input_file, format="turtle")
 #data.parse("etsin-uh-output.ttl", format="turtle")
 #data.parse("yso-skos.ttl", format="turtle")
 #data.parse("ysa-skos.ttl", format="turtle")
@@ -52,11 +58,12 @@ ws['G1'] = "resourceType"
 ws['H1'] = "subjects"
 ws['I1'] = "language"
 ws['J1'] = "rights"
-ws['K1'] = "description"
-
+ws['K1'] = "keywords"
+ws['L1'] = "description"
 
 i = 2
 for s,p,o in data.triples( (None, RDF.type, ns_attx['Dataset'] ) ):
+    print i
     # identifier
     # - identifier
     # - identifierType
@@ -67,7 +74,7 @@ for s,p,o in data.triples( (None, RDF.type, ns_attx['Dataset'] ) ):
 
         content = identifier + ' (' + identifierType + ')'
 
-    print content
+    #print content
     ws['A' + str(i)] = content
 
     # creators
@@ -84,7 +91,7 @@ for s,p,o in data.triples( (None, RDF.type, ns_attx['Dataset'] ) ):
 
         content = content  + name + ', ' + aff + ' (' + identifier + ')|'
 
-    print content
+    #print content
     ws['B' + str(i)] = content
 
     # contributors
@@ -103,24 +110,24 @@ for s,p,o in data.triples( (None, RDF.type, ns_attx['Dataset'] ) ):
 
         content = content  + typeName + ': ' + name + ' ' + aff + ' (' + identifier + ')|'
 
-    print content
+    #print content
     ws['C' + str(i)] = content
 
 
     # title
     content = getValues(s, ns_attx['title'])
-    print content
+    #print content
     ws['D' + str(i)] = content
 
 
     # publisher
     content = getValues(s, ns_attx['publisher'])
-    print content
+    #print content
     ws['E' + str(i)] = content
 
     # publicationYear
     content = getValues(s, ns_attx['pubdate'])
-    print content
+    #print content
     ws['F' + str(i)] = content
 
     # resource type
@@ -130,7 +137,7 @@ for s,p,o in data.triples( (None, RDF.type, ns_attx['Dataset'] ) ):
         title = getFirstValue(r, ns_attx['title'])
         content = content  + title + ' (' + t + ')'
 
-    print content
+    #print content
     ws['G' + str(i)] = content
 
     # subjects
@@ -151,14 +158,14 @@ for s,p,o in data.triples( (None, RDF.type, ns_attx['Dataset'] ) ):
         if identifier == '':
             identifier = str(r)
         content = content  + label + ' (' + scheme + ':' + identifier + ')|'
-    print content
+    #print content
     ws['H' + str(i)] = content
 
 
     # language
-    content = getValues(s, ns_attx['pubdate'])
-    print content
-    ws['I' + str(i)] = content
+    content = getValues(s, ns_attx['language'])
+    #print content
+    ws['J' + str(i)] = content
 
     # rightsList
     # - rights
@@ -168,14 +175,24 @@ for s,p,o in data.triples( (None, RDF.type, ns_attx['Dataset'] ) ):
         label = getFirstValue(r, ns_attx['licenseID'])
         identifier = getFirstValue(r, ns_attx['valueURI'])
         content = content  + label + ' (' + identifier + ')|'
-    print content
+    #print content
     ws['J' + str(i)] = content
+
+
+    # keyword
+    content = getValues(s, ns_attx['keyword'])
+    #print content
+    ws['K' + str(i)] = content
 
     # description
     content = getValues(s, ns_attx['description'])
-    print content
-    ws['K' + str(i)] = content
+    #print content
+    ws['L' + str(i)] = content
+
+
     i = i + 1
 
+
+
 #wb.save('etsin-output.xlsx')
-wb.save('zenodo-output.xlsx')
+wb.save(output_file)

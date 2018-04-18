@@ -29,7 +29,7 @@
     "rights": "work:licenseID"
 
   },
-  "@type": "work:Dataset",
+  "@type": "work:uh-dataset",
   "@explicit": true,
   "@requireAll": false,
   "identifier": {
